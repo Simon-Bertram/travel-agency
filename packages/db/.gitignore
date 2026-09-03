@@ -1,6 +1,9 @@
 # dependencies (bun install)
 node_modules
 
+# drizzle-kit generates meta/_journal.json (pre-v1 layout) which Alchemy rejects at deploy time
+src/migrations/meta
+
 # output
 out
 dist

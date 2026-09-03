@@ -2,8 +2,10 @@
 
 import type { RequestLogger } from "evlog";
 
-declare namespace App {
-  interface Locals {
-    log: RequestLogger;
+declare global {
+  namespace App {
+    interface Locals {
+      log: RequestLogger;
+    }
   }
 }

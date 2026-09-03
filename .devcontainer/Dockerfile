@@ -43,6 +43,9 @@ RUN pnpm run build
 # --- STAGE 3: DEV ---
 FROM base AS dev
 WORKDIR /workspaces
+# CI=1 on the base image keeps pnpm/corepack non-interactive during image
+# builds. Unset it here so local `turbo` TUI and Alchemy login work.
+ENV CI=
 
 # Default process user for the container (matches remoteUser in devcontainer.json).
 # Named volumes (node_modules, .wrangler, .alchemy, pnpm store) are mounted at

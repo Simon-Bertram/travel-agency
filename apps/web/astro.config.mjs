@@ -16,5 +16,15 @@ export default defineConfig({
   output: "server",
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      exclude: ["alchemy", "@alchemy.run/frontend-frameworks"],
+    },
+    environments: {
+      ssr: {
+        optimizeDeps: {
+          exclude: ["alchemy", "@alchemy.run/frontend-frameworks"],
+        },
+      },
+    },
   },
 });

@@ -1,15 +1,14 @@
 import { defineMiddleware } from "astro:middleware";
-import { createRequestLogger, initLogger } from "evlog";
+import { createWorkersLogger, initWorkersLogger } from "evlog/workers";
 
-initLogger({
+initWorkersLogger({
   env: { service: "travel-agency-web" },
 });
 
 export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
-  const url = new URL(request.url);
-  const log = createRequestLogger({
-    method: request.method,
-    path: url.pathname,
+  const executionCtx = (locals as Record<string, any>).runtime?.ctx;
+  const log = createWorkersLogger(request, {
+    executionCtx,
   });
 
   locals.log = log;
