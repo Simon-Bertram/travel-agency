@@ -1,0 +1,36 @@
+{
+  "name": "travel-agency",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "check": "ultracite check",
+    "check-types": "turbo run check-types",
+    "db:generate": "turbo run db:generate -F @travel-agency/db --",
+    "deploy": "turbo run deploy -F @travel-agency/infra --",
+    "destroy": "turbo run destroy -F @travel-agency/infra --",
+    "dev": "turbo run dev",
+    "dev:server": "turbo run dev -F server --",
+    "dev:web": "turbo run dev -F web --",
+    "fix": "ultracite fix"
+  },
+  "dependencies": {
+    "@travel-agency/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.9",
+    "@cloudflare/workers-types": "catalog:",
+    "@travel-agency/config": "workspace:*",
+    "@types/node": "catalog:",
+    "turbo": "^2.10.12",
+    "typescript": "catalog:",
+    "ultracite": "7.10.7"
+  },
+  "packageManager": "pnpm@11.25.0"
+}

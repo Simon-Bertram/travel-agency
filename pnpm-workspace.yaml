@@ -1,0 +1,23 @@
+packages:
+  - apps/*
+  - packages/*
+allowBuilds:
+  esbuild: true
+  sharp: true
+  msgpackr-extract: true
+  workerd: true
+catalog:
+  dotenv: ^17.4.2
+  zod: ^4.4.3
+  typescript: ^6.0.3
+  "@types/node": ^26.2.0
+  "@cloudflare/workers-types": ^5.20260728.1
+  hono: ^4.12.32
+  "@orpc/server": ^1.14.12
+  "@orpc/openapi": ^1.14.12
+  "@orpc/zod": ^1.14.12
+  better-auth: 1.7.1
+  evlog: ^2.27.1
+  "@orpc/client": ^1.14.12
+minimumReleaseAgeExclude:
+  - '@astrojs/starlight@0.42.0'

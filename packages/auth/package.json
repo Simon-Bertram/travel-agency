@@ -1,0 +1,24 @@
+{
+  "name": "@travel-agency/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@travel-agency/db": "workspace:*",
+    "@travel-agency/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@travel-agency/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

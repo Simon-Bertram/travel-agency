@@ -1,0 +1,6 @@
+{
+  "extends": "@travel-agency/config/tsconfig.base.json",
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}

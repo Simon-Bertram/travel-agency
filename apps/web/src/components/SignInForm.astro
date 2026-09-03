@@ -1,0 +1,101 @@
+---
+import { authClient } from "../lib/auth-client";
+---
+
+<div class="mx-auto mt-10 w-full max-w-md p-6">
+  <h1 class="mb-6 text-center font-bold text-3xl text-white">Welcome Back</h1>
+
+  <form class="space-y-4" id="signin-form">
+    <div class="space-y-1">
+      <label class="block text-sm font-medium text-neutral-300" for="email"
+        >Email</label
+      >
+      <input
+        class="w-full rounded-lg border border-neutral-700 bg-neutral-800 px-4 py-2.5 text-white placeholder-neutral-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        required
+        type="email"
+      >
+      <p class="text-sm text-red-500 hidden" id="email-error"></p>
+    </div>
+
+    <div class="space-y-1">
+      <label class="block text-sm font-medium text-neutral-300" for="password"
+        >Password</label
+      >
+      <input
+        class="w-full rounded-lg border border-neutral-700 bg-neutral-800 px-4 py-2.5 text-white placeholder-neutral-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+        id="password"
+        name="password"
+        placeholder="••••••••"
+        required
+        type="password"
+      >
+      <p class="text-sm text-red-500 hidden" id="password-error"></p>
+    </div>
+
+    <p class="text-sm text-red-500 hidden" id="form-error"></p>
+
+    <button
+      class="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-neutral-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+      type="submit"
+    >
+      Sign In
+    </button>
+  </form>
+
+  <div class="mt-4 text-center">
+    <a class="text-indigo-400 hover:text-indigo-300 text-sm" href="/signup">
+      Need an account? Sign Up
+    </a>
+  </div>
+</div>
+
+<script>
+  import { authClient } from "../lib/auth-client";
+
+  const form = document.getElementById("signin-form") as HTMLFormElement;
+  const emailInput = document.getElementById("email") as HTMLInputElement;
+  const passwordInput = document.getElementById("password") as HTMLInputElement;
+  const formError = document.getElementById(
+    "form-error"
+  ) as HTMLParagraphElement;
+  const submitButton = form.querySelector(
+    'button[type="submit"]'
+  ) as HTMLButtonElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    formError.classList.add("hidden");
+    submitButton.disabled = true;
+    submitButton.textContent = "Signing in...";
+
+    try {
+      await authClient.signIn.email(
+        {
+          email: emailInput.value,
+          password: passwordInput.value,
+        },
+        {
+          onError: (ctx) => {
+            formError.textContent =
+              ctx.error.message || "Sign in failed. Please try again.";
+            formError.classList.remove("hidden");
+          },
+          onSuccess: () => {
+            window.location.href = "/dashboard";
+          },
+        }
+      );
+    } catch (error) {
+      formError.textContent = "An unexpected error occurred.";
+      formError.classList.remove("hidden");
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Sign In";
+    }
+  });
+</script>
