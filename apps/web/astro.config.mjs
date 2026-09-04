@@ -1,6 +1,6 @@
 // @ts-check
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, envField } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,4 +30,23 @@ export default defineConfig({
       },
     },
   },
+  fonts: [{
+    provider: fontProviders.local(),
+    name: 'Playfair Display',
+    cssVariable: '--font-playfair-display',
+    options: {
+      variants: [
+        {
+          weight: "400 900",
+          style: "normal",
+          src: ["./src/assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf"],
+        },
+        {
+          weight: "400 900",
+          style: "italic",
+          src: ["./src/assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf"],
+        },
+      ],
+    },
+  }]
 });
