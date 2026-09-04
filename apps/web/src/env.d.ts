@@ -5,11 +5,11 @@ import type { RequestLogger } from "evlog";
 declare global {
   namespace App {
     interface Locals {
-      log: RequestLogger;
       cfContext?: {
         waitUntil: (promise: Promise<unknown>) => void;
         passThroughOnException: () => void;
       };
+      log: RequestLogger;
     }
   }
 }

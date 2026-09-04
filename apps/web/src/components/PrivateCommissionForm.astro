@@ -1,0 +1,452 @@
+---
+---
+
+<section class="py-24 bg-[#fbf9f6] relative" id="inquire">
+  <div class="mx-auto max-w-4xl px-6 lg:px-12">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 mb-3">
+        <span class="h-[1px] w-6 bg-[#c5a880]"></span>
+        <span
+          class="text-[11px] uppercase tracking-[0.25em] text-[#c5a880] font-semibold"
+        >
+          Confidential Consultation
+        </span>
+        <span class="h-[1px] w-6 bg-[#c5a880]"></span>
+      </div>
+      <h2
+        class="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0c3a3b] font-normal tracking-tight"
+      >
+        Commission a <span class="italic text-[#164f51]">Private Journey</span>
+      </h2>
+      <p
+        class="mt-4 text-sm sm:text-base text-[#0c3a3b]/70 font-light leading-relaxed"
+      >
+        Initiate a private dialogue with our Lead Concierge. Every expedition is
+        drafted uniquely around your family’s timing, private aviation hubs, and
+        security requirements.
+      </p>
+    </div>
+
+    <!-- Swiss Privacy Guarantee Seal -->
+    <div
+      class="mb-10 rounded-2xl border border-[#c5a880]/40 bg-[#ffffff] p-5 shadow-sm flex items-start gap-4"
+    >
+      <div
+        class="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#0c3a3b] text-[#c5a880]"
+      >
+        <!-- Swiss Shield SVG -->
+        <svg
+          aria-hidden="true"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div class="text-xs">
+        <h4 class="font-semibold uppercase tracking-wider text-[#0c3a3b]">
+          Swiss-Standard Discretion & Data Protection
+        </h4>
+        <p class="mt-1 text-[#0c3a3b]/75 font-light leading-relaxed">
+          Your transmission is end-to-end encrypted. We never share client
+          records with advertising brokers or commercial algorithms. Formal
+          Non-Disclosure Agreements (NDAs) are counter-signed before itinerary
+          drafting.
+        </p>
+      </div>
+    </div>
+
+    <!-- The Form Container -->
+    <div
+      class="rounded-3xl border border-[#e6e0d6] bg-[#ffffff] p-8 sm:p-12 shadow-lg relative"
+    >
+      <!-- Active Form View -->
+      <form class="space-y-6" id="commission-form" novalidate>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <!-- Traveler Name -->
+          <div>
+            <label
+              class="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0c3a3b] mb-2"
+              for="traveler-name"
+            >
+              Primary Traveler Full Name <span class="text-[#c5a880]">*</span>
+            </label>
+            <input
+              class="w-full rounded-xl border border-[#e6e0d6] bg-[#fbf9f6] px-4 py-3 text-sm text-[#0c3a3b] placeholder-[#0c3a3b]/30 focus:border-[#c5a880] focus:bg-white focus:outline-none transition-colors"
+              id="traveler-name"
+              name="travelerName"
+              placeholder="e.g. Lord Alistair Vance"
+              required
+              type="text"
+            >
+            <p
+              class="error-msg hidden mt-1 text-[11px] text-rose-600 font-medium"
+            >
+              Please enter the traveler name.
+            </p>
+          </div>
+
+          <!-- Email Address -->
+          <div>
+            <label
+              class="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0c3a3b] mb-2"
+              for="traveler-email"
+            >
+              Correspondence Email <span class="text-[#c5a880]">*</span>
+            </label>
+            <input
+              class="w-full rounded-xl border border-[#e6e0d6] bg-[#fbf9f6] px-4 py-3 text-sm text-[#0c3a3b] placeholder-[#0c3a3b]/30 focus:border-[#c5a880] focus:bg-white focus:outline-none transition-colors"
+              id="traveler-email"
+              name="travelerEmail"
+              placeholder="confidential@familyoffice.ch"
+              required
+              type="email"
+            >
+            <p
+              class="error-msg hidden mt-1 text-[11px] text-rose-600 font-medium"
+            >
+              Please enter a valid correspondence email.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <!-- Target Region -->
+          <div>
+            <label
+              class="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0c3a3b] mb-2"
+              for="commission-region"
+            >
+              Target Region <span class="text-[#c5a880]">*</span>
+            </label>
+            <select
+              class="w-full rounded-xl border border-[#e6e0d6] bg-[#fbf9f6] px-4 py-3 text-sm text-[#0c3a3b] focus:border-[#c5a880] focus:bg-white focus:outline-none transition-colors cursor-pointer"
+              id="commission-region"
+              name="region"
+              required
+            >
+              <option value="">Select Destination</option>
+              <option value="aegean">Aegean & Mediterranean</option>
+              <option value="kyoto">Kyoto & Hokkaido</option>
+              <option value="serengeti">Serengeti & East Africa</option>
+              <option value="patagonia">Patagonian Icefields</option>
+              <option value="custom">Bespoke / Unlisted Route</option>
+            </select>
+            <p
+              class="error-msg hidden mt-1 text-[11px] text-rose-600 font-medium"
+            >
+              Please select a region.
+            </p>
+          </div>
+
+          <!-- Season -->
+          <div>
+            <label
+              class="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0c3a3b] mb-2"
+              for="commission-season"
+            >
+              Travel Window <span class="text-[#c5a880]">*</span>
+            </label>
+            <select
+              class="w-full rounded-xl border border-[#e6e0d6] bg-[#fbf9f6] px-4 py-3 text-sm text-[#0c3a3b] focus:border-[#c5a880] focus:bg-white focus:outline-none transition-colors cursor-pointer"
+              id="commission-season"
+              name="season"
+              required
+            >
+              <option value="">Select Window</option>
+              <option value="spring-2026">Spring Equinox 2026</option>
+              <option value="summer-2026">High Summer 2026</option>
+              <option value="autumn-2026">Autumn Harvest 2026</option>
+              <option value="winter-2026">Winter 2026 / 2027</option>
+              <option value="2027-advance">2027 Advance Planning</option>
+            </select>
+            <p
+              class="error-msg hidden mt-1 text-[11px] text-rose-600 font-medium"
+            >
+              Please select a travel window.
+            </p>
+          </div>
+
+          <!-- Party Size -->
+          <div>
+            <label
+              class="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0c3a3b] mb-2"
+              for="commission-party"
+            >
+              Party Size <span class="text-[#c5a880]">*</span>
+            </label>
+            <select
+              class="w-full rounded-xl border border-[#e6e0d6] bg-[#fbf9f6] px-4 py-3 text-sm text-[#0c3a3b] focus:border-[#c5a880] focus:bg-white focus:outline-none transition-colors cursor-pointer"
+              id="commission-party"
+              name="partySize"
+              required
+            >
+              <option value="">Select Party Size</option>
+              <option value="solo">Principal / Solo Traveler (1)</option>
+              <option value="couple">Couple (2 Travelers)</option>
+              <option value="family">Private Family (3–6)</option>
+              <option value="delegation">
+                Private Delegation / Group (7+)
+              </option>
+            </select>
+            <p
+              class="error-msg hidden mt-1 text-[11px] text-rose-600 font-medium"
+            >
+              Please select party size.
+            </p>
+          </div>
+        </div>
+
+        <!-- Vision Notes -->
+        <div>
+          <label
+            class="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0c3a3b] mb-2"
+            for="commission-notes"
+          >
+            Expedition Vision & Bespoke Requirements
+          </label>
+          <textarea
+            class="w-full rounded-xl border border-[#e6e0d6] bg-[#fbf9f6] px-4 py-3 text-sm text-[#0c3a3b] placeholder-[#0c3a3b]/30 focus:border-[#c5a880] focus:bg-white focus:outline-none transition-colors"
+            id="commission-notes"
+            name="notes"
+            placeholder="Please indicate private aviation requirements, specific cultural or archival aspirations, security preferences, or sanctuary specifications..."
+            rows="4"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div
+          class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+        >
+          <p class="text-[11px] text-[#0c3a3b]/60 flex items-center gap-1.5">
+            <svg
+              aria-hidden="true"
+              class="h-4 w-4 text-[#c5a880]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <rect
+                height="11"
+                rx="2"
+                ry="2"
+                stroke-width="2"
+                width="18"
+                x="3"
+                y="11"
+              />
+              <path d="M7 11V7a5 5 0 0110 0v4" stroke-width="2" />
+            </svg>
+            256-Bit SSL Encrypted Transmission · 24-Hour Lead SLA
+          </p>
+
+          <button
+            class="group inline-flex items-center justify-center gap-3 rounded-full bg-[#0c3a3b] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#fbf9f6] transition-all duration-300 hover:bg-[#164f51] hover:shadow-xl"
+            id="submit-commission-btn"
+            type="submit"
+          >
+            <span id="btn-text">Transmit Private Commission</span>
+            <svg
+              aria-hidden="true"
+              class="h-4 w-4 text-[#c5a880] transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Submission Success View (Hidden initially) -->
+      <div
+        class="hidden py-8 text-center animate-in fade-in duration-500"
+        id="commission-success"
+      >
+        <div
+          class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#0c3a3b] text-[#c5a880] mb-6 shadow-md"
+        >
+          <svg
+            aria-hidden="true"
+            class="h-8 w-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M5 13l4 4L19 7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+
+        <h3
+          class="font-serif text-2xl sm:text-3xl text-[#0c3a3b] font-normal mb-3"
+        >
+          Commission Transmission Confirmed
+        </h3>
+        <p
+          class="text-sm text-[#0c3a3b]/75 max-w-lg mx-auto leading-relaxed mb-6"
+        >
+          Thank you. Your bespoke inquiry has been delivered directly to our
+          Lead Expedition Concierge. You will receive confidential
+          correspondence within 24 hours under our guaranteed SLA.
+        </p>
+
+        <div
+          class="inline-block rounded-xl border border-[#c5a880]/30 bg-[#fbf9f6] px-5 py-3 text-xs text-[#0c3a3b] font-mono mb-8"
+        >
+          Reference Code:
+          <span class="font-semibold text-[#164f51]" id="commission-ref"
+            >TNA-2026-X812</span
+          >
+        </div>
+
+        <div>
+          <button
+            class="rounded-full border border-[#0c3a3b] px-6 py-2.5 text-xs uppercase tracking-wider text-[#0c3a3b] hover:bg-[#0c3a3b] hover:text-[#fbf9f6] transition-colors"
+            id="reset-commission-btn"
+            type="button"
+          >
+            Submit Another Commission
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById(
+    "commission-form"
+  ) as unknown as HTMLFormElement;
+  const successView = document.getElementById("commission-success");
+  const refDisplay = document.getElementById("commission-ref");
+  const resetBtn = document.getElementById("reset-commission-btn");
+  const submitBtn = document.getElementById("submit-commission-btn");
+  const btnText = document.getElementById("btn-text");
+
+  function validateEmail(email: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById(
+      "traveler-name"
+    ) as unknown as HTMLInputElement;
+    const emailInput = document.getElementById(
+      "traveler-email"
+    ) as unknown as HTMLInputElement;
+    const regionSelect = document.getElementById(
+      "commission-region"
+    ) as unknown as HTMLSelectElement;
+    const seasonSelect = document.getElementById(
+      "commission-season"
+    ) as unknown as HTMLSelectElement;
+    const partySelect = document.getElementById(
+      "commission-party"
+    ) as unknown as HTMLSelectElement;
+
+    let hasErrors = false;
+
+    // Validate Name
+    if (nameInput.value.trim()) {
+      nameInput.nextElementSibling?.classList.add("hidden");
+      nameInput.classList.remove("border-rose-500");
+    } else {
+      nameInput.nextElementSibling?.classList.remove("hidden");
+      nameInput.classList.add("border-rose-500");
+      hasErrors = true;
+    }
+
+    // Validate Email
+    if (validateEmail(emailInput.value.trim())) {
+      emailInput.nextElementSibling?.classList.add("hidden");
+      emailInput.classList.remove("border-rose-500");
+    } else {
+      emailInput.nextElementSibling?.classList.remove("hidden");
+      emailInput.classList.add("border-rose-500");
+      hasErrors = true;
+    }
+
+    // Validate Region
+    if (regionSelect.value) {
+      regionSelect.nextElementSibling?.classList.add("hidden");
+      regionSelect.classList.remove("border-rose-500");
+    } else {
+      regionSelect.nextElementSibling?.classList.remove("hidden");
+      regionSelect.classList.add("border-rose-500");
+      hasErrors = true;
+    }
+
+    // Validate Season
+    if (seasonSelect.value) {
+      seasonSelect.nextElementSibling?.classList.add("hidden");
+      seasonSelect.classList.remove("border-rose-500");
+    } else {
+      seasonSelect.nextElementSibling?.classList.remove("hidden");
+      seasonSelect.classList.add("border-rose-500");
+      hasErrors = true;
+    }
+
+    // Validate Party
+    if (partySelect.value) {
+      partySelect.nextElementSibling?.classList.add("hidden");
+      partySelect.classList.remove("border-rose-500");
+    } else {
+      partySelect.nextElementSibling?.classList.remove("hidden");
+      partySelect.classList.add("border-rose-500");
+      hasErrors = true;
+    }
+
+    if (hasErrors) {
+      return;
+    }
+
+    // Simulate sending transmission
+    if (submitBtn && btnText) {
+      submitBtn.setAttribute("disabled", "true");
+      btnText.textContent = "Encrypting & Transmitting...";
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    // Generate random reference code
+    const randomRef = "TNA-2026-" + Math.floor(1000 + Math.random() * 9000);
+    if (refDisplay) {
+      refDisplay.textContent = randomRef;
+    }
+
+    form.classList.add("hidden");
+    successView?.classList.remove("hidden");
+
+    if (submitBtn && btnText) {
+      submitBtn.removeAttribute("disabled");
+      btnText.textContent = "Transmit Private Commission";
+    }
+  });
+
+  resetBtn?.addEventListener("click", () => {
+    form.reset();
+    successView?.classList.add("hidden");
+    form.classList.remove("hidden");
+  });
+</script>

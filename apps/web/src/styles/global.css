@@ -1,8 +1,47 @@
 @import "tailwindcss";
 
-/* Add your theme customizations here. */
-/* See the TailwindCSS v4 docs for more info: https://tailwindcss.com/docs/v4-beta */
-
 @theme {
-  --font-sans: "Inter", sans-serif;
+  --color-atelier-teal: #0c3a3b;
+  --color-atelier-teal-dark: #072526;
+  --color-atelier-teal-light: #164f51;
+  --color-alabaster: #fbf9f6;
+  --color-alabaster-subtle: #f5f3f0;
+  --color-alabaster-card: #ffffff;
+  --color-champagne: #c5a880;
+  --color-champagne-light: #e6d7c3;
+  --color-champagne-dark: #9e7f53;
+  --color-parchment-border: #e6e0d6;
+  --color-parchment-dark: #2a2c2b;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans:
+    "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-alabaster);
+  color: var(--color-atelier-teal);
+}
+
+::selection {
+  color: #0c3a3b;
+  background-color: rgba(197, 168, 128, 0.35);
+}
+
+/* Archival typography & subtle details */
+.tracking-widest-plus {
+  letter-spacing: 0.22em;
+}
+
+.gold-gradient-text {
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #dfcaa8 0%, #c5a880 50%, #9e7f53 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }

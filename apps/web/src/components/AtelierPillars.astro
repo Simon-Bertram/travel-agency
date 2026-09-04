@@ -1,0 +1,131 @@
+---
+const pillars = [
+  {
+    description:
+      "Every expedition is linked by confidential private air logistics. From long-range intercontinental jets to remote-landing bush aircraft and superyacht helipads, we manage seamless point-to-point transit with dedicated customs expeditors.",
+    features: [
+      "Discreet tail-number clearance & private FBO lounges",
+      "Direct access to unlisted airstrips & remote archipelagos",
+      "Tailored in-flight menu designed by Michelin-starred culinary partners",
+    ],
+    icon: "plane",
+    number: "I",
+    subtitle: "FBO Direct Tarmac Transfers & Precision Routing",
+    title: "Private Aviation & Discretionary Charters",
+  },
+  {
+    description:
+      "We unlock exclusive access to private Mediterranean islands, restored monastic villas, and secluded alpine lodges that are entirely unavailable on the public market, secured under strict non-disclosure agreements.",
+    features: [
+      "100% full-privatization buyouts for sovereign families & collectors",
+      "Dedicated resident butler, private chef, and discrete security detail",
+      "Architectural significance and historical preservation pedigree",
+    ],
+    icon: "estate",
+    number: "II",
+    subtitle: "Privatized Estates & Unlisted Heritage Preserves",
+    title: "Off-Market Sanctuaries & Architectural Estates",
+  },
+  {
+    description:
+      "Beyond conventional travel: one-on-one sessions with Living National Treasures, private after-hours walkthroughs of national museum vaults with lead conservators, and rare access to centuries-old private archives.",
+    features: [
+      "Direct mentorship with master artisans, historians, and scholars",
+      "Curator-accompanied exploration of closed archaeological vaults",
+      "Private philanthropic access to international conservation preserves",
+    ],
+    icon: "culture",
+    number: "III",
+    subtitle: "Singular Access to Living Heritage & Closed Archives",
+    title: "Archival Cultural Immersion & Master Mentorship",
+  },
+];
+---
+
+<section
+  class="py-28 bg-[#0c3a3b] text-[#fbf9f6] relative overflow-hidden"
+  id="pillars"
+>
+  <!-- Subtle decorative ambient pattern -->
+  <div
+    class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#c5a880_1px,transparent_1px)] [background-size:24px_24px]"
+  ></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div class="inline-flex items-center gap-2 mb-3">
+        <span class="h-[1px] w-6 bg-[#c5a880]"></span>
+        <span
+          class="text-[11px] uppercase tracking-[0.25em] text-[#c5a880] font-semibold"
+        >
+          The Foundations of Excellence
+        </span>
+        <span class="h-[1px] w-6 bg-[#c5a880]"></span>
+      </div>
+      <h2
+        class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#fbf9f6]"
+      >
+        The Three Atelier <span class="italic text-[#e6d7c3]">Pillars</span>
+      </h2>
+      <p
+        class="mt-4 text-sm sm:text-base text-[#fbf9f6]/75 font-light leading-relaxed"
+      >
+        Engineered for ultra-high-net-worth travelers who require uncompromising
+        discretion, architectural integrity, and singular human experiences.
+      </p>
+    </div>
+
+    <!-- Pillars Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {pillars.map((pillar) => (
+        <div class="group relative flex flex-col justify-between rounded-2xl border border-[#c5a880]/20 bg-[#072526]/70 p-8 sm:p-10 backdrop-blur-sm transition-all duration-300 hover:border-[#c5a880]/60 hover:bg-[#072526]/90 shadow-xl">
+          <div class="absolute top-6 right-8 font-serif text-5xl font-light text-[#c5a880]/15 select-none transition-colors group-hover:text-[#c5a880]/30">
+            {pillar.number}
+          </div>
+
+          <div>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-[#c5a880]/40 bg-[#0c3a3b] text-[#c5a880] mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+              {pillar.icon === "plane" && (
+                <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+              )}
+              {pillar.icon === "estate" && (
+                <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+              )}
+              {pillar.icon === "culture" && (
+                <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                </svg>
+              )}
+            </div>
+
+            <p class="text-[11px] uppercase tracking-[0.2em] text-[#c5a880] font-semibold mb-2">
+              {pillar.subtitle}
+            </p>
+            <h3 class="font-serif text-xl sm:text-2xl text-[#fbf9f6] font-normal leading-snug mb-4">
+              {pillar.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-[#fbf9f6]/75 font-light leading-relaxed mb-6">
+              {pillar.description}
+            </p>
+          </div>
+
+          <div class="pt-6 border-t border-[#c5a880]/20 mt-4">
+            <ul class="space-y-2.5">
+              {pillar.features.map((feat) => (
+                <li class="flex items-start gap-2.5 text-xs text-[#e6d7c3] font-light">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c5a880]"></span>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

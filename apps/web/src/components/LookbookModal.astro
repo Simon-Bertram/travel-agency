@@ -1,0 +1,242 @@
+---
+---
+
+<div
+  aria-modal="true"
+  class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md transition-all duration-300"
+  id="lookbook-modal"
+  role="dialog"
+>
+  <div
+    class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border border-[#c5a880]/40 bg-[#0c3a3b] text-[#fbf9f6] shadow-2xl p-6 sm:p-10"
+  >
+    <!-- Close button -->
+    <button
+      aria-label="Close Lookbook Modal"
+      class="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 hover:border-[#c5a880] hover:text-[#c5a880] transition-colors focus:outline-none"
+      id="close-lookbook-btn"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M6 18L18 6M6 6l12 12"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+
+    <!-- Modal Header -->
+    <div class="text-center max-w-2xl mx-auto mb-10 pt-2">
+      <div class="inline-flex items-center gap-2 mb-2">
+        <span
+          class="text-[10px] uppercase tracking-[0.3em] text-[#c5a880] font-semibold"
+        >
+          Confidential Monograph
+        </span>
+      </div>
+      <h3
+        class="font-serif text-3xl sm:text-4xl text-[#fbf9f6] font-normal leading-tight"
+      >
+        The Atelier Lookbook &
+        <span class="italic text-[#e6d7c3]">Compendium</span>
+      </h3>
+      <p
+        class="mt-3 text-xs sm:text-sm text-[#fbf9f6]/75 font-light leading-relaxed"
+      >
+        Volume IV: Archival chronicles, private charter parameters, and
+        sensorial journals curated for collectors and sovereign families.
+      </p>
+    </div>
+
+    <!-- Editorial Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+      <!-- Item 1 -->
+      <div
+        class="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#072526]"
+      >
+        <img
+          alt="Aegean Sea Lookbook"
+          class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          src="/images/itinerary-aegean.jpg"
+        >
+        <div class="p-4">
+          <span
+            class="text-[10px] uppercase tracking-widest text-[#c5a880] font-semibold"
+            >Sensory Vignette I</span
+          >
+          <h4 class="font-serif text-lg text-[#fbf9f6] mt-1">
+            Aegean Sea Teak & Wild Thyme
+          </h4>
+          <p class="text-xs text-[#fbf9f6]/70 mt-1 font-light leading-relaxed">
+            Morning meltemi winds carrying mountain oregano over private
+            anchorages untouched by commercial ferries.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div
+        class="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#072526]"
+      >
+        <img
+          alt="Kyoto Sanctuary Lookbook"
+          class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          src="/images/itinerary-kyoto.jpg"
+        >
+        <div class="p-4">
+          <span
+            class="text-[10px] uppercase tracking-widest text-[#c5a880] font-semibold"
+            >Sensory Vignette II</span
+          >
+          <h4 class="font-serif text-lg text-[#fbf9f6] mt-1">
+            Kyoto Hinoki Steam & Rain-Damp Moss
+          </h4>
+          <p class="text-xs text-[#fbf9f6]/70 mt-1 font-light leading-relaxed">
+            Diffused lantern reflections on cedar onsen water in the quiet
+            foothills of northern Kyoto.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div
+        class="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#072526]"
+      >
+        <img
+          alt="Serengeti Conservancy Lookbook"
+          class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          src="/images/itinerary-serengeti.jpg"
+        >
+        <div class="p-4">
+          <span
+            class="text-[10px] uppercase tracking-widest text-[#c5a880] font-semibold"
+            >Sensory Vignette III</span
+          >
+          <h4 class="font-serif text-lg text-[#fbf9f6] mt-1">
+            Serengeti Amber Light & Earth
+          </h4>
+          <p class="text-xs text-[#fbf9f6]/70 mt-1 font-light leading-relaxed">
+            The low rumble of migration herds vibrating the mahogany floorboards
+            of an exclusive private concession camp.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div
+        class="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#072526]"
+      >
+        <img
+          alt="Patagonian Fjord Lookbook"
+          class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          src="/images/itinerary-patagonia.jpg"
+        >
+        <div class="p-4">
+          <span
+            class="text-[10px] uppercase tracking-widest text-[#c5a880] font-semibold"
+            >Sensory Vignette IV</span
+          >
+          <h4 class="font-serif text-lg text-[#fbf9f6] mt-1">
+            Patagonian Blue Ice & Lenga Smoke
+          </h4>
+          <p class="text-xs text-[#fbf9f6]/70 mt-1 font-light leading-relaxed">
+            The sharp crack of calving glacial walls echoing across still
+            sapphire waters, viewed from hearthside sanctuary.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Download / Direct Folio Form -->
+    <div
+      class="rounded-2xl border border-[#c5a880]/30 bg-[#072526]/80 p-6 text-center"
+    >
+      <h4 class="font-serif text-lg text-[#fbf9f6] mb-1">
+        Receive the Complete 84-Page Monograph (PDF)
+      </h4>
+      <p class="text-xs text-[#fbf9f6]/70 max-w-md mx-auto mb-4 font-light">
+        Includes architectural estate blueprints, seasonal aviation windows, and
+        private chef profiles.
+      </p>
+
+      <form
+        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+        id="lookbook-download-form"
+      >
+        <input
+          class="flex-1 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-xs text-white placeholder-white/40 focus:border-[#c5a880] focus:outline-none"
+          id="lookbook-email"
+          placeholder="Enter correspondence email"
+          required
+          type="email"
+        >
+        <button
+          class="rounded-full bg-[#c5a880] px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#0c3a3b] hover:bg-[#dfcaa8] transition-colors"
+          type="submit"
+        >
+          Request Folio
+        </button>
+      </form>
+      <p
+        class="hidden text-xs text-[#c5a880] mt-3 font-medium"
+        id="lookbook-status"
+      >
+        ✓ The Compendium has been dispatched to your correspondence address.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("lookbook-modal");
+  const closeBtn = document.getElementById("close-lookbook-btn");
+  const downloadForm = document.getElementById("lookbook-download-form");
+  const statusMsg = document.getElementById("lookbook-status");
+
+  function openModal() {
+    modal?.classList.remove("hidden");
+    modal?.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal?.classList.add("hidden");
+    modal?.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+
+  window.addEventListener("open-lookbook-modal", openModal);
+  closeBtn?.addEventListener("click", closeModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // ESC key listener
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal?.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+
+  downloadForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (statusMsg) {
+      statusMsg.classList.remove("hidden");
+      setTimeout(() => {
+        closeModal();
+        statusMsg.classList.add("hidden");
+      }, 2500);
+    }
+  });
+</script>

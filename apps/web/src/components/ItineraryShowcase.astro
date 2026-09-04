@@ -1,0 +1,398 @@
+---
+interface Itinerary {
+  aviationTier: string;
+  duration: string;
+  highlights: string[];
+  id: string;
+  image: string;
+  region: string;
+  regionTag: string;
+  season: string;
+  seasonTag: string;
+  style: string;
+  subtitle: string;
+  summary: string;
+  title: string;
+}
+
+const itineraries: Itinerary[] = [
+  {
+    aviationTier: "Private Helicopter & Citation Sovereign Tarmac Transfer",
+    duration: "12 Days / 11 Nights",
+    highlights: [
+      "Closed-door access to Delos archaeological excavations",
+      "Private sommelier-curated tasting in 600-year-old Santorini vault",
+      "Confidential helicopter transfers between remote island coves",
+    ],
+    id: "aegean",
+    image: "/images/itinerary-aegean.jpg",
+    region: "aegean",
+    regionTag: "Aegean & Mediterranean",
+    season: "summer",
+    seasonTag: "High Summer",
+    style: "yacht",
+    subtitle: "Private Marine Expedition & Secluded Cliffside Estates",
+    summary:
+      "Sail aboard a custom 44m wooden gulet through private moorings between Delos, Milos, and Folegandros, paired with an exclusive cliffside architectural villa estate.",
+    title: "The Aegean Archipelago & Secret Cycladic Sanctuaries",
+  },
+  {
+    aviationTier: "Gulfstream G650 Haneda VIP · Citation Hakodate",
+    duration: "14 Days / 13 Nights",
+    highlights: [
+      "One-on-one katana forging apprenticeship with Living National Treasure",
+      "Night meditation in Daitoku-ji temple with head abbot",
+      "Exclusive buyout of private cedar hot-spring estate in Niseko",
+    ],
+    id: "kyoto",
+    image: "/images/itinerary-kyoto.jpg",
+    region: "kyoto",
+    regionTag: "Kyoto & Hokkaido",
+    season: "autumn",
+    seasonTag: "Autumn Harvest",
+    style: "cultural",
+    subtitle: "Sacred Shinto Mentorship & Alpine Geothermal Sanctuaries",
+    summary:
+      "Immerse in private tea ceremonies inside 1,200-year-old temple sanctums closed to the public, followed by a private cedar onsen estate nestled in Hokkaido's volcanic peaks.",
+    title: "Kyoto Archival Access & Hokkaido Mountain Solitude",
+  },
+  {
+    aviationTier: "Pilatus PC-12 NGX Direct Bush Runway Clearance",
+    duration: "10 Days / 9 Nights",
+    highlights: [
+      "Zero public vehicle access inside 50,000-acre private conservancy",
+      "Dawn hot-air balloon flight with champagne breakfast over Mara River",
+      "Private dinner beneath ancient baobabs under unpolluted southern skies",
+    ],
+    id: "serengeti",
+    image: "/images/itinerary-serengeti.jpg",
+    region: "serengeti",
+    regionTag: "Serengeti & East Africa",
+    season: "summer",
+    seasonTag: "High Summer",
+    style: "sanctuary",
+    subtitle: "50,000-Acre Private Reserve Buyout & Aerial Bush Safari",
+    summary:
+      "Follow the thundering migration herds in complete seclusion across a privatized concession, staying in handcrafted luxury canvas suites with personal wildlife trackers.",
+    title: "The Great Serengeti Migration & Private Crater Conservancy",
+  },
+  {
+    aviationTier: "Private Falcon 8X Punta Arenas · Twin Otter Ski-Plane",
+    duration: "11 Days / 10 Nights",
+    highlights: [
+      "Helicopter flyover and private ice walk on Grey Glacier ice cap",
+      "Chartered navigation of Bernardo O'Higgins fjords",
+      "Private vintage cellar with sommelier pairings from top Maipo Valley reserves",
+    ],
+    id: "patagonia",
+    image: "/images/itinerary-patagonia.jpg",
+    region: "patagonia",
+    regionTag: "Patagonia & Polar Fjord",
+    season: "winter",
+    seasonTag: "Austral Winter",
+    style: "sanctuary",
+    subtitle: "Glacial Expedition Yacht & Architectural Glass Estate",
+    summary:
+      "Navigate granite spires and blue ice calderas in Chilean Patagonia. Retreat each evening to a cantilevered glass sanctuary warmed by open hearth fires.",
+    title: "Patagonian Icefield Navigation & Remote Fjord Sanctuary",
+  },
+];
+---
+
+<section
+  class="py-24 bg-[#fbf9f6] border-b border-[#e6e0d6] relative"
+  id="destinations"
+>
+  <div class="mx-auto max-w-7xl px-6 lg:px-12">
+    <!-- Section Header -->
+    <div
+      class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+    >
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="h-[1px] w-6 bg-[#c5a880]"></span>
+          <span
+            class="text-[11px] uppercase tracking-[0.25em] text-[#c5a880] font-semibold"
+          >
+            Handcrafted Portfolios
+          </span>
+        </div>
+        <h2
+          class="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0c3a3b] font-normal tracking-tight"
+        >
+          Curated Itinerary
+          <span class="italic text-[#164f51]">Commissions</span>
+        </h2>
+        <p
+          class="mt-4 text-sm sm:text-base text-[#0c3a3b]/70 font-light leading-relaxed"
+        >
+          Sensorial chronologies calibrated for complete seclusion, private
+          aviation clearance, and direct archival access. Every journey is
+          customized without templates.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap gap-2 text-xs" id="itinerary-tabs">
+        <button
+          class="itinerary-tab active rounded-full px-4 py-2 border border-[#0c3a3b] bg-[#0c3a3b] text-[#fbf9f6] transition-all duration-200"
+          data-filter="all"
+          type="button"
+        >
+          All Showcases
+        </button>
+        <button
+          class="itinerary-tab rounded-full px-4 py-2 border border-[#e6e0d6] bg-white text-[#0c3a3b]/80 hover:border-[#c5a880] transition-all duration-200"
+          data-filter="aegean"
+          type="button"
+        >
+          Aegean
+        </button>
+        <button
+          class="itinerary-tab rounded-full px-4 py-2 border border-[#e6e0d6] bg-white text-[#0c3a3b]/80 hover:border-[#c5a880] transition-all duration-200"
+          data-filter="kyoto"
+          type="button"
+        >
+          Kyoto
+        </button>
+        <button
+          class="itinerary-tab rounded-full px-4 py-2 border border-[#e6e0d6] bg-white text-[#0c3a3b]/80 hover:border-[#c5a880] transition-all duration-200"
+          data-filter="serengeti"
+          type="button"
+        >
+          Serengeti
+        </button>
+        <button
+          class="itinerary-tab rounded-full px-4 py-2 border border-[#e6e0d6] bg-white text-[#0c3a3b]/80 hover:border-[#c5a880] transition-all duration-200"
+          data-filter="patagonia"
+          type="button"
+        >
+          Patagonia
+        </button>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
+      id="itinerary-grid"
+    >
+      {itineraries.map((itinerary) => (
+        <article
+          class="itinerary-card group flex flex-col overflow-hidden rounded-2xl border border-[#e6e0d6] bg-[#ffffff] shadow-sm transition-all duration-500 hover:shadow-xl hover:border-[#c5a880]/50"
+          data-region={itinerary.region}
+          data-season={itinerary.season}
+          data-style={itinerary.style}
+        >
+          <div class="relative h-72 sm:h-80 w-full overflow-hidden bg-neutral-100">
+            <img
+              src={itinerary.image}
+              alt={itinerary.title}
+              class="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+
+            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+              <span class="rounded-full border border-white/30 bg-black/40 px-3 py-1 text-[10px] uppercase tracking-[0.16em] font-medium text-white backdrop-blur-md">
+                {itinerary.regionTag}
+              </span>
+              <span class="rounded-full border border-[#c5a880]/50 bg-[#0c3a3b]/70 px-3 py-1 text-[10px] uppercase tracking-[0.16em] font-medium text-[#e6d7c3] backdrop-blur-md">
+                {itinerary.seasonTag}
+              </span>
+            </div>
+
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs">
+              <span class="font-medium tracking-wide flex items-center gap-1.5">
+                <svg
+                  aria-hidden="true"
+                  class="h-4 w-4 text-[#c5a880]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {itinerary.duration}
+              </span>
+              <span class="text-[11px] uppercase tracking-[0.14em] text-[#c5a880] font-semibold">
+                Privatized Commission
+              </span>
+            </div>
+          </div>
+
+          <div class="flex flex-1 flex-col p-6 sm:p-8 justify-between">
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.2em] text-[#c5a880] font-semibold mb-2">
+                {itinerary.subtitle}
+              </p>
+              <h3 class="font-serif text-xl sm:text-2xl text-[#0c3a3b] font-normal leading-snug group-hover:text-[#164f51] transition-colors mb-3">
+                {itinerary.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-[#0c3a3b]/75 font-light leading-relaxed mb-6">
+                {itinerary.summary}
+              </p>
+
+              <div class="rounded-xl border border-[#e6e0d6] bg-[#fbf9f6] p-3.5 mb-6 flex items-start gap-3">
+                <div class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0c3a3b] text-[#c5a880]">
+                  <svg
+                    aria-hidden="true"
+                    class="h-3.5 w-3.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="text-[11px]">
+                  <span class="font-semibold uppercase tracking-wider text-[#0c3a3b] block">Aviation Clearance</span>
+                  <span class="text-[#0c3a3b]/70 font-light">{itinerary.aviationTier}</span>
+                </div>
+              </div>
+
+              <ul class="space-y-2 mb-8">
+                {itinerary.highlights.map((item) => (
+                  <li class="flex items-center gap-2.5 text-xs text-[#0c3a3b]/85 font-light">
+                    <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#c5a880]"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="pt-5 border-t border-[#e6e0d6] flex items-center justify-between gap-4">
+              <span class="text-[11px] uppercase tracking-widest text-[#0c3a3b]/60">
+                Priced Upon Consultation
+              </span>
+              <a
+                href={`#inquire`}
+                data-preselect-region={itinerary.region}
+                class="commission-trigger inline-flex items-center gap-2 rounded-full border border-[#0c3a3b] bg-[#0c3a3b] px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] text-[#fbf9f6] transition-all duration-300 hover:bg-[#164f51] hover:shadow-md"
+              >
+                <span>Enquire</span>
+                <svg
+                  aria-hidden="true"
+                  class="h-3 w-3 text-[#c5a880]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Empty State for filters -->
+    <div class="hidden text-center py-16" id="no-itineraries-message">
+      <p class="font-serif text-xl text-[#0c3a3b] mb-2">
+        No matching bespoke itineraries
+      </p>
+      <p class="text-xs text-[#0c3a3b]/60 mb-6">
+        Our concierges design custom expeditions for all non-listed
+        destinations.
+      </p>
+      <a
+        class="inline-block rounded-full bg-[#0c3a3b] px-6 py-2.5 text-xs uppercase tracking-wider text-[#fbf9f6]"
+        href="#inquire"
+      >
+        Request Custom Route
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>(".itinerary-card");
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".itinerary-tab");
+  const noMessage = document.getElementById("no-itineraries-message");
+  const commissionTriggers = document.querySelectorAll<HTMLAnchorElement>(
+    ".commission-trigger"
+  );
+
+  function filterCards(region: string, season = "all", style = "all") {
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const cardRegion = card.getAttribute("data-region");
+      const cardSeason = card.getAttribute("data-season");
+      const cardStyle = card.getAttribute("data-style");
+
+      const matchRegion = region === "all" || cardRegion === region;
+      const matchSeason = season === "all" || cardSeason === season;
+      const matchStyle = style === "all" || cardStyle === style;
+
+      if (matchRegion && matchSeason && matchStyle) {
+        card.classList.remove("hidden");
+        visibleCount++;
+      } else {
+        card.classList.add("hidden");
+      }
+    });
+
+    if (visibleCount === 0) {
+      noMessage?.classList.remove("hidden");
+    } else {
+      noMessage?.classList.add("hidden");
+    }
+  }
+
+  // Tab click handler
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => {
+        t.classList.remove(
+          "active",
+          "bg-[#0c3a3b]",
+          "text-[#fbf9f6]",
+          "border-[#0c3a3b]"
+        );
+        t.classList.add("bg-white", "text-[#0c3a3b]/80", "border-[#e6e0d6]");
+      });
+
+      tab.classList.add(
+        "active",
+        "bg-[#0c3a3b]",
+        "text-[#fbf9f6]",
+        "border-[#0c3a3b]"
+      );
+      tab.classList.remove("bg-white", "text-[#0c3a3b]/80", "border-[#e6e0d6]");
+
+      const filter = tab.getAttribute("data-filter") || "all";
+      filterCards(filter);
+    });
+  });
+
+  // Listen to custom event from Hero filter
+  window.addEventListener("filter-itineraries", ((e: CustomEvent) => {
+    const { region, season, style } = e.detail;
+    filterCards(region, season, style);
+
+    // Update active tab visually if matches
+    tabs.forEach((tab) => {
+      if (tab.getAttribute("data-filter") === region) {
+        tab.click();
+      }
+    });
+  }) as EventListener);
+
+  // Preselect region in inquiry form
+  commissionTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const regionVal = trigger.getAttribute("data-preselect-region");
+      if (regionVal) {
+        const select = document.getElementById(
+          "commission-region"
+        ) as unknown as HTMLSelectElement;
+        if (select) {
+          select.value = regionVal;
+        }
+      }
+    });
+  });
+</script>

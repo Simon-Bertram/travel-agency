@@ -71,9 +71,8 @@ const BODY_PARSER_METHODS = new Set([
   "text",
 ] as const);
 
-type BodyParserMethod = typeof BODY_PARSER_METHODS extends Set<infer T>
-  ? T
-  : never;
+type BodyParserMethod =
+  typeof BODY_PARSER_METHODS extends Set<infer T> ? T : never;
 
 function createBodyProxy(c: { req: { raw: Request } }) {
   return new Proxy(c.req.raw, {
@@ -82,7 +81,9 @@ function createBodyProxy(c: { req: { raw: Request } }) {
         return false;
       }
       if (BODY_PARSER_METHODS.has(prop as BodyParserMethod)) {
-        const fn = (c.req as unknown as Record<string, () => unknown>)[prop as string];
+        const fn = (c.req as unknown as Record<string, () => unknown>)[
+          prop as string
+        ];
         return () => fn?.call(c.req);
       }
       return Reflect.get(target, prop, target);
@@ -167,4 +168,3 @@ app.onError((error, c) => {
 app.get("/", (c) => c.text("OK"));
 
 export default app;
-

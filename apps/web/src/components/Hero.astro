@@ -1,0 +1,249 @@
+---
+---
+
+<section
+  class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0c3a3b] text-[#fbf9f6] pt-12 pb-24"
+>
+  <!-- Full-bleed background image with subtle cinematic overlay -->
+  <div class="absolute inset-0 z-0">
+    <img
+      alt="Private coastal architectural retreat sanctuary"
+      class="h-full w-full object-cover object-center brightness-[0.78] contrast-[1.05] scale-[1.02] transform transition-transform duration-1000"
+      fetchpriority="high"
+      loading="eager"
+      src="/images/hero-sanctuary.jpg"
+    >
+    <!-- Rich gradient scrims for luxury editorial depth -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-[#0c3a3b] via-[#0c3a3b]/40 to-[#072526]/60"
+    ></div>
+    <div
+      class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(7,37,38,0.5)_100%)]"
+    ></div>
+  </div>
+
+  <!-- Content Container -->
+  <div
+    class="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-12 flex flex-col items-center"
+  >
+    <!-- Archival Badge -->
+    <div
+      class="inline-flex items-center gap-2.5 rounded-full border border-[#c5a880]/40 bg-[#0c3a3b]/70 px-4 py-1.5 backdrop-blur-md mb-6 shadow-sm"
+    >
+      <span class="h-1.5 w-1.5 rounded-full bg-[#c5a880] animate-pulse"></span>
+      <span
+        class="text-[11px] uppercase tracking-[0.25em] text-[#e6d7c3] font-medium"
+      >
+        Private Commissions · 2026 / 2027 Season
+      </span>
+    </div>
+
+    <!-- Main Editorial Headline -->
+    <h1
+      class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.12] tracking-tight text-[#fbf9f6] mb-6"
+    >
+      Curators of
+      <span class="italic font-normal text-[#e6d7c3]">Unscripted</span>
+      Expeditions & Archival Sanctuaries
+    </h1>
+
+    <!-- Narrative Subtext -->
+    <p
+      class="max-w-2xl text-base sm:text-lg text-[#fbf9f6]/80 font-light leading-relaxed mb-10 tracking-wide"
+    >
+      Transitioning sovereign families, private collectors, and discerning
+      connoisseurs to confidential bespoke travel, rare cultural access, and
+      off-market architectural retreats.
+    </p>
+
+    <!-- CTAs -->
+    <div
+      class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-16"
+    >
+      <a
+        class="inline-flex items-center justify-center gap-3 rounded-full bg-[#c5a880] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#0c3a3b] transition-all duration-300 hover:bg-[#dfcaa8] hover:shadow-xl hover:scale-[1.02]"
+        href="#inquire"
+      >
+        <span>Request Private Commission</span>
+        <svg
+          aria-hidden="true"
+          class="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M14 5l7 7m0 0l-7 7m7-7H3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </a>
+
+      <button
+        class="inline-flex items-center justify-center gap-2.5 rounded-full border border-[#fbf9f6]/40 bg-white/5 px-7 py-3.5 text-xs font-medium uppercase tracking-[0.2em] text-[#fbf9f6] backdrop-blur-md transition-all duration-300 hover:border-[#c5a880] hover:text-[#c5a880] hover:bg-white/10"
+        id="trigger-lookbook-btn"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="h-4 w-4 text-[#c5a880]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+          />
+        </svg>
+        <span>Explore Digital Lookbook</span>
+      </button>
+    </div>
+
+    <!-- Floating Itinerary Quick-Filter Bar -->
+    <div
+      class="w-full max-w-4xl rounded-2xl border border-[#c5a880]/30 bg-[#0c3a3b]/85 p-3.5 sm:p-5 backdrop-blur-xl shadow-2xl"
+    >
+      <form
+        class="grid grid-cols-1 gap-3 sm:grid-cols-4 sm:gap-4 items-center"
+        id="hero-filter-form"
+      >
+        <!-- Region Dropdown -->
+        <div class="flex flex-col text-left px-2">
+          <label
+            class="text-[10px] uppercase tracking-[0.2em] text-[#c5a880] font-semibold mb-1"
+            for="filter-region"
+          >
+            Region
+          </label>
+          <select
+            class="w-full bg-transparent text-xs text-[#fbf9f6] focus:outline-none cursor-pointer border-b border-white/20 pb-1 hover:border-[#c5a880]"
+            id="filter-region"
+          >
+            <option class="bg-[#0c3a3b] text-white" value="all">
+              All Global Regions
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="aegean">
+              Aegean & Mediterranean
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="kyoto">
+              Kyoto & Hokkaido
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="serengeti">
+              Serengeti & East Africa
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="patagonia">
+              Patagonia & Polar Fjord
+            </option>
+          </select>
+        </div>
+
+        <!-- Season Dropdown -->
+        <div class="flex flex-col text-left px-2">
+          <label
+            class="text-[10px] uppercase tracking-[0.2em] text-[#c5a880] font-semibold mb-1"
+            for="filter-season"
+          >
+            Seasonal Window
+          </label>
+          <select
+            class="w-full bg-transparent text-xs text-[#fbf9f6] focus:outline-none cursor-pointer border-b border-white/20 pb-1 hover:border-[#c5a880]"
+            id="filter-season"
+          >
+            <option class="bg-[#0c3a3b] text-white" value="all">
+              Any Season
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="spring">
+              Spring Equinox
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="summer">
+              High Summer
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="autumn">
+              Autumn Harvest
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="winter">
+              Austral / Polar Winter
+            </option>
+          </select>
+        </div>
+
+        <!-- Style Dropdown -->
+        <div class="flex flex-col text-left px-2">
+          <label
+            class="text-[10px] uppercase tracking-[0.2em] text-[#c5a880] font-semibold mb-1"
+            for="filter-style"
+          >
+            Expedition Tier
+          </label>
+          <select
+            class="w-full bg-transparent text-xs text-[#fbf9f6] focus:outline-none cursor-pointer border-b border-white/20 pb-1 hover:border-[#c5a880]"
+            id="filter-style"
+          >
+            <option class="bg-[#0c3a3b] text-white" value="all">
+              All Expedition Types
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="yacht">
+              Private Marine Charter
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="sanctuary">
+              Archival Estate Sanctuary
+            </option>
+            <option class="bg-[#0c3a3b] text-white" value="cultural">
+              Curated Cultural Immersion
+            </option>
+          </select>
+        </div>
+
+        <!-- Quick Filter Trigger Button -->
+        <div class="flex items-end pt-1">
+          <button
+            class="w-full rounded-xl bg-[#c5a880]/20 border border-[#c5a880]/60 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#e6d7c3] transition-all duration-300 hover:bg-[#c5a880] hover:text-[#0c3a3b]"
+            type="submit"
+          >
+            Filter Itineraries
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const filterForm = document.getElementById("hero-filter-form");
+  const lookbookBtn = document.getElementById("trigger-lookbook-btn");
+
+  filterForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const regionSelect = document.getElementById(
+      "filter-region"
+    ) as unknown as HTMLSelectElement;
+    const seasonSelect = document.getElementById(
+      "filter-season"
+    ) as unknown as HTMLSelectElement;
+    const styleSelect = document.getElementById(
+      "filter-style"
+    ) as unknown as HTMLSelectElement;
+
+    const filterEvent = new CustomEvent("filter-itineraries", {
+      detail: {
+        region: regionSelect?.value || "all",
+        season: seasonSelect?.value || "all",
+        style: styleSelect?.value || "all",
+      },
+    });
+    window.dispatchEvent(filterEvent);
+
+    // Smooth scroll down to itineraries
+    const target = document.getElementById("destinations");
+    target?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  lookbookBtn?.addEventListener("click", () => {
+    window.dispatchEvent(new CustomEvent("open-lookbook-modal"));
+  });
+</script>
