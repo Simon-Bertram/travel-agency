@@ -6,7 +6,7 @@ initWorkersLogger({
 });
 
 export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
-  const executionCtx = (locals as Record<string, any>).runtime?.ctx;
+  const executionCtx = locals.cfContext ?? (locals as Record<string, any>).runtime?.ctx;
   const log = createWorkersLogger(request, {
     executionCtx,
   });

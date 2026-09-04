@@ -6,6 +6,10 @@ declare global {
   namespace App {
     interface Locals {
       log: RequestLogger;
+      cfContext?: {
+        waitUntil: (promise: Promise<unknown>) => void;
+        passThroughOnException: () => void;
+      };
     }
   }
 }

@@ -2,5 +2,13 @@
   "extends": "@travel-agency/config/tsconfig.base.json",
   "compilerOptions": {
     "strictNullChecks": true
-  }
+  },
+  "exclude": [
+    "apps/**",
+    "packages/**",
+    ".alchemy/**",
+    ".turbo/**",
+    ".wrangler/**",
+    "node_modules"
+  ]
 }
