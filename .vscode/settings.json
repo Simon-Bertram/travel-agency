@@ -1,4 +1,5 @@
 {
   "typescript.tsserver.maxTsServerMemory": 8192,
-  "typescript.tsserver.log": "verbose"
+  "typescript.tsserver.log": "verbose",
+  "css.lint.unknownAtRules": "ignore"
 }

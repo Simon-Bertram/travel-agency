@@ -1,4 +1,6 @@
 ---
+import Brand from "./Brand.astro";
+
 interface Props {
   transparent?: boolean;
 }
@@ -15,7 +17,7 @@ const navLinks = [
 ---
 
 <header
-  class={`sticky top-0 z-40 w-full transition-all duration-300 border-b border-[#0c3a3b]/10 bg-[#fbf9f6]/90 backdrop-blur-md ${
+  class={`sticky top-0 z-40 w-full transition-all duration-300 border-b border-atelier-teal/10 bg-alabaster/90 backdrop-blur-md ${
     transparent ? "bg-opacity-90" : ""
   }`}
   id="main-nav"
@@ -23,49 +25,16 @@ const navLinks = [
   <div
     class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12"
   >
-    <!-- Brand / Insignia -->
-    <a class="group flex items-center gap-3.5 focus:outline-none" href="/">
-      <!-- Compass-Star Atelier Emblem -->
-      <div
-        class="relative flex h-9 w-9 items-center justify-center rounded-full border border-[#c5a880]/60 bg-[#0c3a3b] text-[#c5a880] shadow-sm transition-transform duration-300 group-hover:scale-105"
-      >
-        <svg
-          aria-hidden="true"
-          class="h-5 w-5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          viewBox="0 0 24 24"
-        >
-          <polygon
-            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-            stroke-linejoin="round"
-          />
-          <circle cx="12" cy="12" fill="currentColor" r="2" />
-        </svg>
-      </div>
-      <div class="flex flex-col">
-        <span
-          class="font-serif text-lg tracking-[0.18em] font-semibold text-[#0c3a3b] transition-colors group-hover:text-[#164f51]"
-        >
-          TERRA NOVA
-        </span>
-        <span
-          class="text-[9px] uppercase tracking-[0.3em] text-[#c5a880] font-medium -mt-0.5"
-        >
-          Atelier Privé
-        </span>
-      </div>
-    </a>
+    <Brand />
 
     <!-- Desktop Navigation Links -->
     <nav
-      class="hidden md:flex items-center gap-8 text-[13px] tracking-[0.14em] uppercase font-medium text-[#0c3a3b]/80"
+      class="hidden md:flex items-center gap-8 text-[13px] tracking-[0.14em] uppercase font-medium text-atelier-teal/80"
     >
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="relative py-1 transition-colors hover:text-[#0c3a3b] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:bg-[#c5a880] after:transition-all after:duration-300 hover:after:w-full"
+          class="relative py-1 transition-colors hover:text-black after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:bg-champagne after:transition-all after:duration-300 hover:after:w-full"
         >
           {link.label}
         </a>
@@ -79,7 +48,7 @@ const navLinks = [
         <!-- Guest State -->
         <div class="flex items-center gap-3" id="nav-guest-state">
           <a
-            class="hidden sm:inline-block text-[13px] tracking-wider uppercase text-[#0c3a3b]/70 hover:text-[#0c3a3b] font-medium transition-colors"
+            class="hidden sm:inline-block text-[13px] tracking-wider uppercase text-atelier-teal/70 hover:text-black font-medium transition-colors"
             href="/login"
           >
             Sign In
@@ -90,25 +59,25 @@ const navLinks = [
         <div class="hidden relative" id="nav-user-state">
           <button
             aria-expanded="false"
-            class="flex items-center gap-2 rounded-full border border-[#c5a880]/50 bg-[#0c3a3b] px-2.5 py-1 text-xs text-[#fbf9f6] hover:border-[#c5a880] transition-colors focus:outline-none"
+            class="flex items-center gap-2 rounded-full border border-champagne/50 bg-black px-2.5 py-1 text-xs text-champagne hover:border-champagne transition-colors focus:outline-none"
             id="avatar-menu-button"
             type="button"
           >
             <span
-              class="flex h-6 w-6 items-center justify-center rounded-full bg-[#c5a880] text-[11px] font-semibold text-[#0c3a3b]"
+              class="flex h-6 w-6 items-center justify-center rounded-full bg-champagne text-[11px] font-semibold text-black"
               id="user-initials"
             >
               T
             </span>
             <span
-              class="hidden md:inline-block text-[12px] font-medium max-w-[100px] truncate"
+              class="hidden md:inline-block text-[12px] font-medium max-w-24 truncate"
               id="user-name-display"
             >
               Traveler
             </span>
             <svg
               aria-hidden="true"
-              class="h-3.5 w-3.5 text-[#c5a880]"
+              class="h-3.5 w-3.5 text-champagne"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -124,30 +93,30 @@ const navLinks = [
 
           <!-- User Dropdown Menu -->
           <div
-            class="hidden absolute right-0 mt-2 w-52 rounded-lg border border-[#e6e0d6] bg-[#ffffff] p-2 shadow-xl z-50 animate-in fade-in slide-in-from-top-1 duration-200"
+            class="hidden absolute right-0 mt-2 w-52 rounded-lg border border-champagne/60 bg-white p-2 shadow-xl z-50 animate-in fade-in slide-in-from-top-1 duration-200"
             id="user-dropdown-menu"
           >
-            <div class="px-3 py-2 border-b border-[#e6e0d6]/60 mb-1">
+            <div class="px-3 py-2 border-b border-champagne/60 mb-1">
               <p
-                class="text-xs font-semibold text-[#0c3a3b]"
+                class="text-xs font-semibold text-black"
                 id="dropdown-user-name"
               >
                 Traveler
               </p>
               <p
-                class="text-[11px] text-[#0c3a3b]/60 truncate"
+                class="text-[11px] text-black/60 truncate"
                 id="dropdown-user-email"
               >
                 client@terranova.com
               </p>
             </div>
             <a
-              class="flex items-center gap-2 rounded px-3 py-2 text-xs text-[#0c3a3b] hover:bg-[#f5f3f0] transition-colors"
+              class="flex items-center gap-2 rounded px-3 py-2 text-xs text-black hover:bg-champagne/10 transition-colors"
               href="/dashboard"
             >
               <svg
                 aria-hidden="true"
-                class="h-4 w-4 text-[#c5a880]"
+                class="h-4 w-4 text-champagne"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -194,7 +163,7 @@ const navLinks = [
         <span class="relative z-10">Plan Your Journey</span>
         <svg
           aria-hidden="true"
-          class="relative z-10 h-3 w-3 text-[#c5a880] transition-transform duration-300 group-hover:translate-x-0.5"
+          class="relative z-10 h-3 w-3 text-champagne transition-transform duration-300 group-hover:translate-x-0.5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -211,7 +180,7 @@ const navLinks = [
       <!-- Mobile Menu Toggle Button -->
       <button
         aria-label="Toggle Navigation Menu"
-        class="md:hidden flex h-9 w-9 items-center justify-center rounded-full border border-[#0c3a3b]/20 text-[#0c3a3b] focus:outline-none"
+        class="md:hidden flex h-9 w-9 items-center justify-center rounded-full border border-atelier-teal/20 text-black focus:outline-none"
         id="mobile-menu-button"
         type="button"
       >
@@ -236,19 +205,19 @@ const navLinks = [
 
   <!-- Mobile Drawer Menu -->
   <div
-    class="hidden md:hidden border-t border-[#0c3a3b]/10 bg-[#fbf9f6] px-6 py-6 animate-in slide-in-from-top duration-300"
+    class="hidden md:hidden border-t border-atelier-teal/10 bg-white px-6 py-6 animate-in slide-in-from-top duration-300"
     id="mobile-drawer"
   >
     <nav
-      class="flex flex-col gap-4 text-[13px] tracking-[0.16em] uppercase font-medium text-[#0c3a3b]"
+      class="flex flex-col gap-4 text-[13px] tracking-[0.16em] uppercase font-medium text-black"
     >
       {navLinks.map((link) => (
-        <a href={link.href} class="py-2 border-b border-[#0c3a3b]/5 hover:text-[#c5a880] transition-colors mobile-nav-item">
+        <a href={link.href} class="py-2 border-b border-atelier-teal/5 hover:text-champagne transition-colors mobile-nav-item">
           {link.label}
         </a>
       ))}
       <a
-        class="py-2 border-b border-[#0c3a3b]/5 text-[#c5a880] mobile-nav-item"
+        class="py-2 border-b border-atelier-teal/5 text-champagne mobile-nav-item"
         href="/login"
       >
         Client Sign In / Register
