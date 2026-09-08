@@ -1,101 +1,277 @@
 ---
-import { authClient } from "../lib/auth-client";
 ---
 
-<div class="mx-auto mt-10 w-full max-w-md p-6">
-  <h1 class="mb-6 text-center font-bold text-3xl text-white">Welcome Back</h1>
-
-  <form class="space-y-4" id="signin-form">
-    <div class="space-y-1">
-      <label class="block text-sm font-medium text-neutral-300" for="email"
-        >Email</label
+<div class="mx-auto w-full max-w-md px-6 py-16">
+  <div
+    class="rounded-3xl border border-parchment-border bg-alabaster-card p-8 shadow-lg sm:p-10"
+  >
+    <div class="mb-8 text-center">
+      <div class="mb-3 inline-flex items-center gap-2">
+        <span class="h-px w-6 bg-champagne"></span>
+        <span
+          class="text-[11px] font-semibold uppercase tracking-[0.25em] text-champagne"
+        >
+          Client Authentication
+        </span>
+        <span class="h-px w-6 bg-champagne"></span>
+      </div>
+      <h1
+        class="font-serif text-3xl font-normal tracking-tight text-atelier-teal sm:text-4xl"
       >
-      <input
-        class="w-full rounded-lg border border-neutral-700 bg-neutral-800 px-4 py-2.5 text-white placeholder-neutral-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-        id="email"
-        name="email"
-        placeholder="you@example.com"
-        required
-        type="email"
-      >
-      <p class="text-sm text-red-500 hidden" id="email-error"></p>
+        Welcome <span class="italic text-atelier-teal-light">back</span>
+      </h1>
+      <p class="mt-3 text-sm font-light leading-relaxed text-atelier-teal/70">
+        Sign in to the traveler salon to continue your private commissions.
+      </p>
     </div>
 
-    <div class="space-y-1">
-      <label class="block text-sm font-medium text-neutral-300" for="password"
-        >Password</label
-      >
-      <input
-        class="w-full rounded-lg border border-neutral-700 bg-neutral-800 px-4 py-2.5 text-white placeholder-neutral-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-        id="password"
-        name="password"
-        placeholder="••••••••"
-        required
-        type="password"
-      >
-      <p class="text-sm text-red-500 hidden" id="password-error"></p>
-    </div>
+    <form class="space-y-6" id="signin-form" novalidate>
+      <div>
+        <label
+          class="mb-2 block text-[11px] font-semibold uppercase tracking-[0.16em] text-atelier-teal"
+          for="signin-email"
+        >
+          Correspondence Email <span class="text-champagne">*</span>
+        </label>
+        <input
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="email"
+          class="w-full rounded-xl border border-atelier-teal/50 bg-alabaster px-4 py-3 text-sm text-atelier-teal placeholder-atelier-teal/30 transition-colors focus-visible:border-champagne-dark focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atelier-teal focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          id="signin-email"
+          name="email"
+          placeholder="confidential@familyoffice.ch"
+          required
+          spellcheck="false"
+          type="email"
+        >
+        <p
+          class="mt-1 hidden text-[11px] font-medium text-rose-700"
+          id="signin-email-error"
+        ></p>
+      </div>
 
-    <p class="text-sm text-red-500 hidden" id="form-error"></p>
+      <div>
+        <label
+          class="mb-2 block text-[11px] font-semibold uppercase tracking-[0.16em] text-atelier-teal"
+          for="signin-password"
+        >
+          Password <span class="text-champagne">*</span>
+        </label>
+        <input
+          aria-invalid="false"
+          autocomplete="current-password"
+          class="w-full rounded-xl border border-atelier-teal/50 bg-alabaster px-4 py-3 text-sm text-atelier-teal placeholder-atelier-teal/30 transition-colors focus-visible:border-champagne-dark focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atelier-teal focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          id="signin-password"
+          name="password"
+          placeholder="Enter your password"
+          required
+          type="password"
+        >
+        <p
+          class="mt-1 hidden text-[11px] font-medium text-rose-700"
+          id="signin-password-error"
+        ></p>
+      </div>
 
-    <button
-      class="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-neutral-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-      type="submit"
+      <p
+        aria-atomic="true"
+        aria-live="assertive"
+        class="hidden text-sm font-medium text-rose-700"
+        id="signin-form-error"
+        role="alert"
+      ></p>
+
+      <button
+        class="group inline-flex min-h-11 w-full items-center justify-center gap-3 rounded-full bg-atelier-teal px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-alabaster transition-all duration-300 hover:bg-atelier-teal-light hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-alabaster-card disabled:cursor-not-allowed disabled:opacity-50"
+        id="signin-submit"
+        type="submit"
+      >
+        <span id="signin-submit-label">Sign In</span>
+        <svg
+          aria-hidden="true"
+          class="h-4 w-4 text-champagne transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M14 5l7 7m0 0l-7 7m7-7H3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <p class="mt-6 text-center">
+    <a
+      class="inline-flex min-h-11 items-center px-3 text-sm text-atelier-teal/80 underline-offset-4 transition-colors hover:text-atelier-teal hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atelier-teal focus-visible:ring-offset-2"
+      href="/signup"
     >
-      Sign In
-    </button>
-  </form>
-
-  <div class="mt-4 text-center">
-    <a class="text-indigo-400 hover:text-indigo-300 text-sm" href="/signup">
       Need an account? Sign Up
     </a>
-  </div>
+  </p>
 </div>
 
 <script>
   import { authClient } from "../lib/auth-client";
 
-  const form = document.getElementById("signin-form") as HTMLFormElement;
-  const emailInput = document.getElementById("email") as HTMLInputElement;
-  const passwordInput = document.getElementById("password") as HTMLInputElement;
-  const formError = document.getElementById(
-    "form-error"
-  ) as HTMLParagraphElement;
-  const submitButton = form.querySelector(
-    'button[type="submit"]'
-  ) as HTMLButtonElement;
+  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  const form = document.getElementById("signin-form");
+  const emailInput = document.getElementById("signin-email");
+  const passwordInput = document.getElementById("signin-password");
+  const emailError = document.getElementById("signin-email-error");
+  const passwordError = document.getElementById("signin-password-error");
+  const formError = document.getElementById("signin-form-error");
+  const submitButton = document.getElementById("signin-submit");
+  const submitLabel = document.getElementById("signin-submit-label");
 
+  if (!(form instanceof HTMLFormElement)) {
+    throw new Error("Sign-in form not found");
+  }
+
+  function isInput(el: Element | null): el is HTMLInputElement {
+    return el instanceof HTMLInputElement;
+  }
+
+  function isParagraph(el: Element | null): el is HTMLParagraphElement {
+    return el instanceof HTMLParagraphElement;
+  }
+
+  function setFieldError(
+    input: HTMLInputElement,
+    errorEl: HTMLParagraphElement,
+    message: string | null
+  ) {
+    if (message) {
+      errorEl.textContent = message;
+      errorEl.classList.remove("hidden");
+      input.setAttribute("aria-invalid", "true");
+      input.setAttribute("aria-describedby", errorEl.id);
+      input.classList.add("border-rose-700");
+      return;
+    }
+
+    errorEl.textContent = "";
+    errorEl.classList.add("hidden");
+    input.setAttribute("aria-invalid", "false");
+    input.removeAttribute("aria-describedby");
+    input.classList.remove("border-rose-700");
+  }
+
+  function setFormError(message: string | null) {
+    if (!isParagraph(formError)) {
+      return;
+    }
+
+    if (message) {
+      formError.textContent = message;
+      formError.classList.remove("hidden");
+      return;
+    }
+
+    formError.textContent = "";
     formError.classList.add("hidden");
-    submitButton.disabled = true;
-    submitButton.textContent = "Signing in...";
+  }
+
+  function validateSignIn() {
+    if (!(isInput(emailInput) && isInput(passwordInput))) {
+      return false;
+    }
+    if (!(isParagraph(emailError) && isParagraph(passwordError))) {
+      return false;
+    }
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    let firstInvalid: HTMLInputElement | null = null;
+
+    if (!email) {
+      setFieldError(emailInput, emailError, "Please enter your email address.");
+      firstInvalid ??= emailInput;
+    } else if (EMAIL_PATTERN.test(email)) {
+      setFieldError(emailInput, emailError, null);
+    } else {
+      setFieldError(
+        emailInput,
+        emailError,
+        "Please enter a valid email address."
+      );
+      firstInvalid ??= emailInput;
+    }
+
+    if (password) {
+      setFieldError(passwordInput, passwordError, null);
+    } else {
+      setFieldError(
+        passwordInput,
+        passwordError,
+        "Please enter your password."
+      );
+      firstInvalid ??= passwordInput;
+    }
+
+    firstInvalid?.focus();
+    return firstInvalid === null;
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    setFormError(null);
+
+    if (!validateSignIn()) {
+      return;
+    }
+
+    if (!(isInput(emailInput) && isInput(passwordInput))) {
+      return;
+    }
+
+    form.setAttribute("aria-busy", "true");
+    if (submitButton instanceof HTMLButtonElement) {
+      submitButton.disabled = true;
+    }
+    if (submitLabel) {
+      submitLabel.textContent = "Signing in...";
+    }
 
     try {
       await authClient.signIn.email(
         {
-          email: emailInput.value,
+          callbackURL: new URL("/dashboard", window.location.origin).href,
+          email: emailInput.value.trim(),
           password: passwordInput.value,
         },
         {
           onError: (ctx) => {
-            formError.textContent =
-              ctx.error.message || "Sign in failed. Please try again.";
-            formError.classList.remove("hidden");
+            if (ctx.error.status === 429) {
+              setFormError(
+                "Too many attempts. Please wait a moment and try again."
+              );
+              return;
+            }
+
+            setFormError("Invalid email or password.");
           },
           onSuccess: () => {
-            window.location.href = "/dashboard";
+            window.location.assign("/dashboard");
           },
         }
       );
-    } catch (error) {
-      formError.textContent = "An unexpected error occurred.";
-      formError.classList.remove("hidden");
+    } catch {
+      setFormError("Something went wrong. Please try again.");
     } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = "Sign In";
+      form.removeAttribute("aria-busy");
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = false;
+      }
+      if (submitLabel) {
+        submitLabel.textContent = "Sign In";
+      }
     }
   });
 </script>
