@@ -1,0 +1,35 @@
+<form class="flex flex-col sm:flex-row gap-3" id="gazette-form">
+  <input
+    class="flex-1 rounded-full border border-white/20 bg-white/5 px-5 py-3 text-xs text-white placeholder-white/40 focus:border-champagne focus:bg-white/10 focus:outline-none transition-all"
+    id="gazette-email"
+    placeholder="principal@estate.ch"
+    required
+    type="email"
+  >
+  <button
+    class="rounded-full bg-champagne px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-black hover:bg-champagne-light transition-colors whitespace-nowrap"
+    type="submit"
+  >
+    Subscribe
+  </button>
+</form>
+<p class="hidden text-xs text-champagne mt-2 font-light" id="gazette-success">
+  ✓ Your correspondence address has been discreetly enrolled in the Atelier
+  Gazette.
+</p>
+
+<script>
+  const gazetteForm = document.getElementById("gazette-form");
+  const gazetteSuccess = document.getElementById("gazette-success");
+
+  gazetteForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    gazetteSuccess?.classList.remove("hidden");
+    const input = document.getElementById(
+      "gazette-email"
+    ) as unknown as HTMLInputElement;
+    if (input) {
+      input.value = "";
+    }
+  });
+</script>

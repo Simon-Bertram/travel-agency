@@ -1,8 +1,10 @@
 ---
+import ApiStatus from "./ApiStatus.astro";
+import SubscribeForm from "./SubscribeForm.astro";
 ---
 
 <footer
-  class="bg-[#072526] text-[#fbf9f6] border-t border-[#c5a880]/20 pt-16 pb-12"
+  class="bg-atelier-teal-dark text-champagne border-t border-champagne/20 pt-16 pb-12"
 >
   <div class="mx-auto max-w-7xl px-6 lg:px-12">
     <!-- Top Row: Newsletter / Gazette Dispatch -->
@@ -11,18 +13,18 @@
     >
       <div class="lg:col-span-6">
         <span
-          class="text-[10px] uppercase tracking-[0.3em] text-[#c5a880] font-semibold block mb-2"
+          class="text-[10px] uppercase tracking-[0.3em] text-champagne font-semibold block mb-2"
         >
           Private Correspondence
         </span>
         <h3
-          class="font-serif text-2xl sm:text-3xl text-[#fbf9f6] font-normal leading-snug"
+          class="font-serif text-2xl sm:text-3xl text-champagne font-normal leading-snug"
         >
           The Atelier Gazette:
-          <span class="italic text-[#e6d7c3]">Quarterly Dispatches</span>
+          <span class="italic text-champagne-light">Quarterly Dispatches</span>
         </h3>
         <p
-          class="mt-2 text-xs sm:text-sm text-[#fbf9f6]/70 font-light leading-relaxed max-w-lg"
+          class="mt-2 text-xs sm:text-sm text-champagne/70 font-light leading-relaxed max-w-lg"
         >
           Receive confidential updates on newly privatized architectural
           sanctuaries, private aviation windows, and unscripted cultural
@@ -31,40 +33,19 @@
       </div>
 
       <div class="lg:col-span-6">
-        <form class="flex flex-col sm:flex-row gap-3" id="gazette-form">
-          <input
-            class="flex-1 rounded-full border border-white/20 bg-white/5 px-5 py-3 text-xs text-white placeholder-white/40 focus:border-[#c5a880] focus:bg-white/10 focus:outline-none transition-all"
-            id="gazette-email"
-            placeholder="principal@estate.ch"
-            required
-            type="email"
-          >
-          <button
-            class="rounded-full bg-[#c5a880] px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#0c3a3b] hover:bg-[#dfcaa8] transition-colors whitespace-nowrap"
-            type="submit"
-          >
-            Subscribe
-          </button>
-        </form>
-        <p
-          class="hidden text-xs text-[#c5a880] mt-2 font-light"
-          id="gazette-success"
-        >
-          ✓ Your correspondence address has been discreetly enrolled in the
-          Atelier Gazette.
-        </p>
+        <SubscribeForm />
       </div>
     </div>
 
     <!-- Main Footer Grid -->
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 py-14 border-b border-white/10"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 py-14 border-b border-champagne/10"
     >
       <!-- Col 1: Brand & Pedigree -->
       <div class="lg:col-span-2">
         <div class="flex items-center gap-3 mb-4">
           <div
-            class="flex h-8 w-8 items-center justify-center rounded-full border border-[#c5a880]/60 bg-[#0c3a3b] text-[#c5a880]"
+            class="flex h-8 w-8 items-center justify-center rounded-full border border-champagne/60 bg-black text-champagne"
           >
             <svg
               aria-hidden="true"
@@ -82,19 +63,19 @@
             </svg>
           </div>
           <span
-            class="font-serif text-lg tracking-[0.16em] font-semibold text-[#fbf9f6]"
+            class="font-serif text-lg tracking-[0.16em] font-semibold text-champagne"
           >
             TERRA NOVA ATELIER
           </span>
         </div>
         <p
-          class="text-xs text-[#fbf9f6]/70 font-light leading-relaxed max-w-sm mb-6"
+          class="text-xs text-champagne/70 font-light leading-relaxed max-w-sm mb-6"
         >
           Curators of unscripted expeditions, off-market architectural estates,
           and rare cultural mentorship for sovereign families, collectors, and
           legacy travelers worldwide.
         </p>
-        <div class="text-[11px] text-[#c5a880] font-mono tracking-wider">
+        <div class="text-[11px] text-champagne font-mono tracking-wider">
           GENEVA · LONDON · TOKYO · NAIROBI
         </div>
       </div>
@@ -102,41 +83,41 @@
       <!-- Col 2: Portfolios -->
       <div>
         <h4
-          class="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#c5a880] mb-4"
+          class="text-[11px] uppercase tracking-[0.2em] font-semibold text-champagne mb-4"
         >
           Portfolios
         </h4>
-        <ul class="space-y-2.5 text-xs text-[#fbf9f6]/75 font-light">
+        <ul class="space-y-2.5 text-xs text-champagne/75 font-light">
           <li>
             <a
-              class="hover:text-[#c5a880] transition-colors"
+              class="hover:text-champagne transition-colors"
               href="#destinations"
               >The Aegean Archipelago</a
             >
           </li>
           <li>
             <a
-              class="hover:text-[#c5a880] transition-colors"
+              class="hover:text-champagne transition-colors"
               href="#destinations"
               >Kyoto Archival Sanctum</a
             >
           </li>
           <li>
             <a
-              class="hover:text-[#c5a880] transition-colors"
+              class="hover:text-champagne transition-colors"
               href="#destinations"
               >Serengeti Private Concession</a
             >
           </li>
           <li>
             <a
-              class="hover:text-[#c5a880] transition-colors"
+              class="hover:text-champagne transition-colors"
               href="#destinations"
               >Patagonian Icefield Retreat</a
             >
           </li>
           <li>
-            <a class="hover:text-[#c5a880] transition-colors" href="#inquire"
+            <a class="hover:text-champagne transition-colors" href="#inquire"
               >Unlisted Bespoke Routes</a
             >
           </li>
@@ -146,33 +127,33 @@
       <!-- Col 3: The Atelier -->
       <div>
         <h4
-          class="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#c5a880] mb-4"
+          class="text-[11px] uppercase tracking-[0.2em] font-semibold text-champagne mb-4"
         >
           The Atelier
         </h4>
-        <ul class="space-y-2.5 text-xs text-[#fbf9f6]/75 font-light">
+        <ul class="space-y-2.5 text-xs text-champagne/75 font-light">
           <li>
-            <a class="hover:text-[#c5a880] transition-colors" href="#pillars"
+            <a class="hover:text-champagne transition-colors" href="#pillars"
               >Private Aviation Logistics</a
             >
           </li>
           <li>
-            <a class="hover:text-[#c5a880] transition-colors" href="#pillars"
+            <a class="hover:text-champagne transition-colors" href="#pillars"
               >Sanctuary Privatization</a
             >
           </li>
           <li>
-            <a class="hover:text-[#c5a880] transition-colors" href="#pillars"
+            <a class="hover:text-champagne transition-colors" href="#pillars"
               >Archival Cultural Access</a
             >
           </li>
           <li>
-            <a class="hover:text-[#c5a880] transition-colors" href="/dashboard"
+            <a class="hover:text-champagne transition-colors" href="/dashboard"
               >Traveler Salon Portal</a
             >
           </li>
           <li>
-            <a class="hover:text-[#c5a880] transition-colors" href="/login"
+            <a class="hover:text-champagne transition-colors" href="/login"
               >Client Authentication</a
             >
           </li>
@@ -182,11 +163,11 @@
       <!-- Col 4: Discretion & Legal -->
       <div>
         <h4
-          class="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#c5a880] mb-4"
+          class="text-[11px] uppercase tracking-[0.2em] font-semibold text-champagne mb-4"
         >
           Swiss Discretion
         </h4>
-        <ul class="space-y-2.5 text-xs text-[#fbf9f6]/75 font-light">
+        <ul class="space-y-2.5 text-xs text-champagne/75 font-light">
           <li>
             <span class="text-white/90 font-medium"
               >Swiss Privacy Standard</span
@@ -201,63 +182,13 @@
 
     <!-- Bottom Row: Copyright & Discrete Server Health Status -->
     <div
-      class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#fbf9f6]/50"
+      class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-champagne/50"
     >
       <div>
-        © {new Date().getFullYear()} Terra Nova Atelier. All rights reserved.
-        Registered in Switzerland.
+        © {new Date().getFullYear()} Travel Kairos. All rights reserved.
       </div>
 
-      <!-- Server / oRPC API Status badge -->
-      <div class="flex items-center gap-2" id="footer-api-status">
-        <span class="h-2 w-2 rounded-full bg-orange-400" id="status-dot"></span>
-        <span id="status-text">Connecting to Concierge Server...</span>
-      </div>
+      <ApiStatus />
     </div>
   </div>
 </footer>
-
-<script>
-  import { orpc } from "../lib/orpc";
-
-  // Gazette subscription mock handler
-  const gazetteForm = document.getElementById("gazette-form");
-  const gazetteSuccess = document.getElementById("gazette-success");
-
-  gazetteForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    gazetteSuccess?.classList.remove("hidden");
-    const input = document.getElementById(
-      "gazette-email"
-    ) as unknown as HTMLInputElement;
-    if (input) {
-      input.value = "";
-    }
-  });
-
-  // Background health check from oRPC
-  const statusDot = document.getElementById("status-dot");
-  const statusText = document.getElementById("status-text");
-
-  async function checkServerHealth() {
-    try {
-      await orpc.healthCheck();
-      if (statusDot) {
-        statusDot.className =
-          "h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]";
-      }
-      if (statusText) {
-        statusText.textContent = "Concierge Network Online";
-      }
-    } catch {
-      if (statusDot) {
-        statusDot.className = "h-2 w-2 rounded-full bg-amber-400";
-      }
-      if (statusText) {
-        statusText.textContent = "Concierge Standby";
-      }
-    }
-  }
-
-  checkServerHealth();
-</script>
