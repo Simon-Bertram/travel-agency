@@ -29,7 +29,7 @@ const navLinks = [
 
     <!-- Desktop Navigation Links -->
     <nav
-      class="hidden md:flex items-center gap-8 text-[13px] tracking-[0.14em] uppercase font-medium text-atelier-teal/80"
+      class="hidden nav:flex items-center gap-8 text-[13px] tracking-[0.14em] uppercase font-medium text-atelier-teal/80"
     >
       {navLinks.map((link) => (
         <a
@@ -47,7 +47,7 @@ const navLinks = [
 
       <!-- Plan Your Journey CTA -->
       <a
-        class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#0c3a3b] px-5 py-2 text-[12px] tracking-[0.16em] uppercase font-medium text-[#fbf9f6] transition-all duration-300 hover:bg-[#164f51] hover:shadow-lg shadow-sm"
+        class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-atelier-teal px-5 py-2 text-[12px] tracking-[0.16em] uppercase font-medium text-white transition-all duration-300 hover:bg-atelier-teal-dark hover:shadow-lg shadow-sm"
         href="#inquire"
       >
         <span class="relative z-10">Plan Your Journey</span>
@@ -70,7 +70,7 @@ const navLinks = [
       <!-- Mobile Menu Toggle Button -->
       <button
         aria-label="Toggle Navigation Menu"
-        class="md:hidden flex h-9 w-9 items-center justify-center rounded-full border border-atelier-teal/20 text-black focus:outline-none"
+        class="flex nav:hidden h-9 w-9 items-center justify-center rounded-full border border-atelier-teal/20 text-black focus:outline-none"
         id="mobile-menu-button"
         type="button"
       >
@@ -95,7 +95,7 @@ const navLinks = [
 
   <!-- Mobile Drawer Menu -->
   <div
-    class="hidden md:hidden border-t border-atelier-teal/10 bg-white px-6 py-6 animate-in slide-in-from-top duration-300"
+    class="hidden nav:hidden border-t border-atelier-teal/10 bg-white px-6 py-6 animate-in slide-in-from-top duration-300"
     id="mobile-drawer"
   >
     <nav
