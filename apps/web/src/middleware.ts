@@ -1,15 +1,20 @@
 import { defineMiddleware } from "astro:middleware";
+import { env } from "cloudflare:workers";
+import { createAxiomDrain } from "evlog/axiom";
+import { createMemoryDrain } from "evlog/memory";
 import { createWorkersLogger, initWorkersLogger } from "evlog/workers";
 
+const isDev =
+  env.EVLOG_DEV === "1" || !(env.AXIOM_API_KEY && env.AXIOM_DATASET);
+
 initWorkersLogger({
+  drain: isDev ? createMemoryDrain() : createAxiomDrain(),
   env: { service: "travel-agency-web" },
 });
 
 export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
-  const executionCtx =
-    locals.cfContext ?? (locals as Record<string, any>).runtime?.ctx;
   const log = createWorkersLogger(request, {
-    executionCtx,
+    executionCtx: locals.cfContext,
   });
 
   locals.log = log;

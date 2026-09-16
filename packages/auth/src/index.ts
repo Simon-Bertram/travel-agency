@@ -41,3 +41,5 @@ export function createAuth() {
     trustedOrigins: [env.CORS_ORIGIN],
   });
 }
+
+export type Auth = ReturnType<typeof createAuth>;

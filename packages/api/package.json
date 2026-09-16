@@ -19,6 +19,7 @@
     "@travel-agency/db": "workspace:*",
     "@travel-agency/env": "workspace:*",
     "dotenv": "catalog:",
+    "evlog": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

@@ -1,16 +1,22 @@
-import { createAuth } from "@travel-agency/auth";
-import type { Context as HonoContext } from "hono";
+import type { Auth } from "@travel-agency/auth";
+import type { EvlogOrpcContext } from "evlog/orpc";
 
-export type CreateContextOptions = {
-  context: HonoContext;
-};
+export interface CreateContextOptions {
+  auth: Auth;
+  headers: Headers;
+  log: EvlogOrpcContext["log"];
+}
 
-export async function createContext({ context }: CreateContextOptions) {
-  const session = await createAuth().api.getSession({
-    headers: context.req.raw.headers,
+export async function createContext({
+  auth,
+  headers,
+  log,
+}: CreateContextOptions) {
+  const session = await auth.api.getSession({
+    headers,
   });
   return {
-    auth: null,
+    log,
     session,
   };
 }
