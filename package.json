@@ -28,7 +28,7 @@
     "@cloudflare/workers-types": "catalog:",
     "@travel-agency/config": "workspace:*",
     "@types/node": "catalog:",
-    "turbo": "^2.10.12",
+    "turbo": "^2.10.13",
     "typescript": "catalog:",
     "ultracite": "7.10.7"
   },

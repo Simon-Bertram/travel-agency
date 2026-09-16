@@ -8,16 +8,16 @@ allowBuilds:
   workerd: true
 catalog:
   dotenv: ^17.4.2
-  zod: ^4.4.3
+  zod: ^4.6.5
   typescript: ^6.0.3
-  "@types/node": ^26.2.0
-  "@cloudflare/workers-types": ^5.20260728.1
-  hono: ^4.12.32
-  "@orpc/server": ^1.14.12
-  "@orpc/openapi": ^1.14.12
-  "@orpc/zod": ^1.14.12
+  "@types/node": ^26.6.0
+  "@cloudflare/workers-types": ^5.20260915.1
+  hono: ^4.13.8
+  "@orpc/server": ^1.15.1
+  "@orpc/openapi": ^1.15.1
+  "@orpc/zod": ^1.15.1
   better-auth: 1.7.1
-  evlog: ^2.27.1
-  "@orpc/client": ^1.14.12
+  evlog: ^2.29.0
+  "@orpc/client": ^1.15.1
 minimumReleaseAgeExclude:
   - '@astrojs/starlight@0.42.0'

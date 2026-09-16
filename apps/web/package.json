@@ -12,14 +12,14 @@
     "@orpc/client": "catalog:",
     "@travel-agency/api": "workspace:*",
     "@travel-agency/env": "workspace:*",
-    "astro": "^7.1.5",
+    "astro": "^7.3.2",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
     "evlog": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@alchemy.run/frontend-frameworks": "2.0.0-beta.75",
+    "@alchemy.run/frontend-frameworks": "2.0.0-beta.77",
     "@astrojs/check": "^0.9.10",
     "@cloudflare/workers-types": "catalog:",
     "@tailwindcss/vite": "^4.3.3",
