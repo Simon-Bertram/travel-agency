@@ -43,34 +43,34 @@ const pillars = [
 ---
 
 <section
-  class="py-28 bg-[#0c3a3b] text-[#fbf9f6] relative overflow-hidden"
+  class="py-28 bg-atelier-teal text-alabaster relative overflow-hidden"
   id="pillars"
 >
   <!-- Subtle decorative ambient pattern -->
   <div
-    class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#c5a880_1px,transparent_1px)] [background-size:24px_24px]"
+    class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(var(--atelier-teal)_1px,transparent_1px)] [background-size:24px_24px]"
   ></div>
 
   <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto mb-20">
       <div class="inline-flex items-center gap-2 mb-3">
-        <span class="h-[1px] w-6 bg-[#c5a880]"></span>
+        <span class="h-px w-6 bg-champagne"></span>
         <span
-          class="text-[11px] uppercase tracking-[0.25em] text-[#c5a880] font-semibold"
+          class="text-[11px] uppercase tracking-[0.25em] text-champagne font-semibold"
         >
           How Every Holiday Is Built
         </span>
-        <span class="h-[1px] w-6 bg-[#c5a880]"></span>
+        <span class="h-px w-6 bg-champagne"></span>
       </div>
       <h2
-        class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#fbf9f6]"
+        class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-alabaster"
       >
         Three things we never leave to
-        <span class="italic text-[#e6d7c3]">chance</span>
+        <span class="italic text-champagne">chance</span>
       </h2>
       <p
-        class="mt-4 text-sm sm:text-base text-[#fbf9f6]/75 font-light leading-relaxed"
+        class="mt-4 text-sm sm:text-base text-alabaster/75 font-light leading-relaxed"
       >
         A great holiday is not luck. It is the journey, the place you wake up,
         and the moments in between — planned so you can enjoy them, not organise
@@ -81,13 +81,13 @@ const pillars = [
     <!-- Pillars Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       {pillars.map((pillar) => (
-        <div class="group relative flex flex-col justify-between rounded-2xl border border-[#c5a880]/20 bg-[#072526]/70 p-8 sm:p-10 backdrop-blur-sm transition-all duration-300 hover:border-[#c5a880]/60 hover:bg-[#072526]/90 shadow-xl">
-          <div class="absolute top-6 right-8 font-serif text-5xl font-light text-[#c5a880]/15 select-none transition-colors group-hover:text-[#c5a880]/30">
+        <div class="group relative flex flex-col justify-between rounded-2xl border border-champagne/20 bg-atelier-teal/70 p-8 sm:p-10 backdrop-blur-sm transition-all duration-300 hover:border-champagne/60 hover:bg-atelier-teal/90 shadow-xl">
+          <div class="absolute top-6 right-8 font-serif text-5xl font-light text-champagne/15 select-none transition-colors group-hover:text-champagne/30">
             {pillar.number}
           </div>
 
           <div>
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-[#c5a880]/40 bg-[#0c3a3b] text-[#c5a880] mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-champagne/40 bg-atelier-teal text-champagne mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm">
               {pillar.icon === "plane" && (
                 <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
@@ -105,22 +105,22 @@ const pillars = [
               )}
             </div>
 
-            <p class="text-[11px] uppercase tracking-[0.2em] text-[#c5a880] font-semibold mb-2">
+            <p class="text-[11px] uppercase tracking-[0.2em] text-champagne font-semibold mb-2">
               {pillar.subtitle}
             </p>
-            <h3 class="font-serif text-xl sm:text-2xl text-[#fbf9f6] font-normal leading-snug mb-4">
+            <h3 class="font-serif text-xl sm:text-2xl text-alabaster font-normal leading-snug mb-4">
               {pillar.title}
             </h3>
-            <p class="text-xs sm:text-sm text-[#fbf9f6]/75 font-light leading-relaxed mb-6">
+            <p class="text-xs sm:text-sm text-alabaster/75 font-light leading-relaxed mb-6">
               {pillar.description}
             </p>
           </div>
 
-          <div class="pt-6 border-t border-[#c5a880]/20 mt-4">
+          <div class="pt-6 border-t border-champagne/20 mt-4">
             <ul class="space-y-2.5">
               {pillar.features.map((feat) => (
-                <li class="flex items-start gap-2.5 text-xs text-[#e6d7c3] font-light">
-                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c5a880]"></span>
+                <li class="flex items-start gap-2.5 text-xs text-champagne font-light">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-champagne"></span>
                   <span>{feat}</span>
                 </li>
               ))}
