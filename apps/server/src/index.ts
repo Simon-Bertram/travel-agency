@@ -2,10 +2,10 @@ import { OpenAPIHandler } from "@orpc/openapi/fetch";
 import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
 import { RPCHandler } from "@orpc/server/fetch";
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
-import { createContext } from "@travel-agency/api/context";
-import { appRouter } from "@travel-agency/api/routers/index";
-import { createAuth } from "@travel-agency/auth";
-import { env } from "@travel-agency/env/server";
+import { createContext } from "@travel-kairos/api/context";
+import { appRouter } from "@travel-kairos/api/routers/index";
+import { createAuth } from "@travel-kairos/auth";
+import { env } from "@travel-kairos/env/server";
 import { createAxiomDrain } from "evlog/axiom";
 import { createAuthMiddleware } from "evlog/better-auth";
 import { type EvlogVariables, evlog } from "evlog/hono";
@@ -22,7 +22,7 @@ const isDev =
   env.EVLOG_DEV === "1" || !(env.AXIOM_API_KEY && env.AXIOM_DATASET);
 
 initWorkersLogger({
-  env: { service: "travel-agency-server" },
+  env: { service: "travel-kairos-server" },
 });
 
 const auth = createAuth();

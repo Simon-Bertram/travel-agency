@@ -1,5 +1,5 @@
 {
-  "extends": "@travel-agency/config/tsconfig.base.json",
+  "extends": "@travel-kairos/config/tsconfig.base.json",
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,

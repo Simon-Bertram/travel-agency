@@ -44,7 +44,7 @@ pnpm exec alchemy deploy
 pnpm exec alchemy dev
 ```
 
-Root shortcut: `pnpm run deploy` (`turbo run deploy -F @travel-agency/infra`).
+Root shortcut: `pnpm run deploy` (`turbo run deploy -F @travel-kairos/infra`).
 
 Credentials belong in the Alchemy profile, not in committed env files. App secrets (`BETTER_AUTH_SECRET`, `CORS_ORIGIN`, `PUBLIC_SERVER_URL`) stay in `apps/server/.env` / `apps/web/.env`.
 

@@ -1,6 +1,6 @@
-import { createDb } from "@travel-agency/db";
-import * as schema from "@travel-agency/db/schema/auth";
-import { env } from "@travel-agency/env/server";
+import { createDb } from "@travel-kairos/db";
+import * as schema from "@travel-kairos/db/schema/auth";
+import { env } from "@travel-kairos/env/server";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 

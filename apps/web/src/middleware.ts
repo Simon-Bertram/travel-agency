@@ -9,7 +9,7 @@ const isDev =
 
 initWorkersLogger({
   drain: isDev ? createMemoryDrain() : createAxiomDrain(),
-  env: { service: "travel-agency-web" },
+  env: { service: "travel-kairos-web" },
 });
 
 export const onRequest = defineMiddleware(async ({ request, locals }, next) => {

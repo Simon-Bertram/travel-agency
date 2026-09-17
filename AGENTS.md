@@ -1,4 +1,4 @@
-# Travel Agency
+# Travel Kairos
 
 ## Vision
 

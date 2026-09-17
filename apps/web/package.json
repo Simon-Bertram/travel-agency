@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@orpc/client": "catalog:",
-    "@travel-agency/api": "workspace:*",
-    "@travel-agency/env": "workspace:*",
+    "@travel-kairos/api": "workspace:*",
+    "@travel-kairos/env": "workspace:*",
     "astro": "^7.3.2",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
@@ -23,7 +23,7 @@
     "@astrojs/check": "^0.9.10",
     "@cloudflare/workers-types": "catalog:",
     "@tailwindcss/vite": "^4.3.3",
-    "@travel-agency/config": "workspace:*",
+    "@travel-kairos/config": "workspace:*",
     "tailwindcss": "^4.3.3",
     "typescript": "catalog:"
   }

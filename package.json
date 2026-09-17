@@ -1,5 +1,5 @@
 {
-  "name": "travel-agency",
+  "name": "travel-kairos",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -10,23 +10,23 @@
     "build": "turbo run build",
     "check": "ultracite check",
     "check-types": "turbo run check-types",
-    "db:generate": "turbo run db:generate -F @travel-agency/db --",
-    "deploy": "turbo run deploy -F @travel-agency/infra --",
-    "destroy": "turbo run destroy -F @travel-agency/infra --",
+    "db:generate": "turbo run db:generate -F @travel-kairos/db --",
+    "deploy": "turbo run deploy -F @travel-kairos/infra --",
+    "destroy": "turbo run destroy -F @travel-kairos/infra --",
     "dev": "turbo run dev",
     "dev:server": "turbo run dev -F server --",
     "dev:web": "turbo run dev -F web --",
     "fix": "ultracite fix"
   },
   "dependencies": {
-    "@travel-agency/env": "workspace:*",
+    "@travel-kairos/env": "workspace:*",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.9",
     "@cloudflare/workers-types": "catalog:",
-    "@travel-agency/config": "workspace:*",
+    "@travel-kairos/config": "workspace:*",
     "@types/node": "catalog:",
     "turbo": "^2.10.13",
     "typescript": "catalog:",

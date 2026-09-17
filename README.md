@@ -1,4 +1,4 @@
-# travel-agency
+# travel-kairos
 
 This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Astro, Hono, ORPC, and more.
 
@@ -62,7 +62,7 @@ The API is running at [http://localhost:3000](http://localhost:3000).
 Deploys are staged and default to a personal `dev_<username>` stage. For production, run the deploy with an explicit stage from `packages/infra`:
 
 ```bash
-cd packages/infra && pnpm exec alchemy deploy --stage production
+cd packages/infra && pnpm exec alchemy deploy --stage prod
 ```
 
 ### Production origins
@@ -72,7 +72,7 @@ cd packages/infra && pnpm exec alchemy deploy --stage production
 ## Project Structure
 
 ```
-travel-agency/
+travel-kairos/
 ├── apps/
 │   ├── web/         # Frontend application (Astro)
 │   ├── docs/        # Documentation site (Astro Starlight)

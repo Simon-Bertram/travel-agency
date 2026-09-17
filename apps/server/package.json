@@ -11,10 +11,10 @@
     "@orpc/openapi": "catalog:",
     "@orpc/server": "catalog:",
     "@orpc/zod": "catalog:",
-    "@travel-agency/api": "workspace:*",
-    "@travel-agency/auth": "workspace:*",
-    "@travel-agency/db": "workspace:*",
-    "@travel-agency/env": "workspace:*",
+    "@travel-kairos/api": "workspace:*",
+    "@travel-kairos/auth": "workspace:*",
+    "@travel-kairos/db": "workspace:*",
+    "@travel-kairos/env": "workspace:*",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
     "evlog": "catalog:",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "catalog:",
-    "@travel-agency/config": "workspace:*",
+    "@travel-kairos/config": "workspace:*",
     "@types/node": "catalog:",
     "tsdown": "^0.22.14",
     "typescript": "catalog:"

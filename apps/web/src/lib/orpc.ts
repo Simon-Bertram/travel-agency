@@ -1,7 +1,7 @@
 import { PUBLIC_SERVER_URL } from "astro:env/client";
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
-import type { AppRouterClient } from "@travel-agency/api/routers/index";
+import type { AppRouterClient } from "@travel-kairos/api/routers/index";
 
 function getServerUrl(url: string) {
   const processEnv = (

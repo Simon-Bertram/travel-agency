@@ -1,5 +1,5 @@
 {
-  "name": "travel-agency-dev",
+  "name": "travel-kairos-dev",
   "build": { "dockerfile": "Dockerfile", "context": "..", "target": "dev" },
   "remoteUser": "node",
   "features": {

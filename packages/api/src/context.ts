@@ -1,4 +1,4 @@
-import type { Auth } from "@travel-agency/auth";
+import type { Auth } from "@travel-kairos/auth";
 import type { EvlogOrpcContext } from "evlog/orpc";
 
 export interface CreateContextOptions {

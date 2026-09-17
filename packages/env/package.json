@@ -1,5 +1,5 @@
 {
-  "name": "@travel-agency/env",
+  "name": "@travel-kairos/env",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -13,8 +13,8 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@travel-agency/config": "workspace:*",
-    "@travel-agency/infra": "workspace:*",
+    "@travel-kairos/config": "workspace:*",
+    "@travel-kairos/infra": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:"
   }

@@ -31,12 +31,13 @@ export const server = Cloudflare.Worker("server", {
     EVLOG_DEV: Config.succeed(evlogDev),
   },
   main: "../../apps/server/src/index.ts",
+  name: "travel-kairos-server",
 });
 
 export type ServerEnv = Cloudflare.InferEnv<typeof server>;
 
 export default Alchemy.Stack(
-  "travel-agency",
+  "travel-kairos",
   {
     providers: Cloudflare.providers(),
     state: Alchemy.localState(),
@@ -59,6 +60,7 @@ export default Alchemy.Stack(
         PUBLIC_SERVER_URL: serverWorker.url.as<string>(),
         SESSION: Cloudflare.KV.Namespace("session"),
       },
+      name: "travel-kairos",
       rootDir: "../../apps/web",
     });
 
