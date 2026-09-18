@@ -16,7 +16,8 @@
     "dev": "turbo run dev",
     "dev:server": "turbo run dev -F server --",
     "dev:web": "turbo run dev -F web --",
-    "fix": "ultracite fix"
+    "fix": "ultracite fix",
+    "promote-admin": "pnpm --filter @travel-kairos/db promote-admin --"
   },
   "dependencies": {
     "@travel-kairos/env": "workspace:*",

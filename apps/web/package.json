@@ -11,11 +11,13 @@
   "dependencies": {
     "@orpc/client": "catalog:",
     "@travel-kairos/api": "workspace:*",
+    "@travel-kairos/auth": "workspace:*",
     "@travel-kairos/env": "workspace:*",
-    "astro": "^7.3.2",
+    "astro": "^7.3.3",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
     "evlog": "catalog:",
+    "uqr": "^0.1.2",
     "zod": "catalog:"
   },
   "devDependencies": {

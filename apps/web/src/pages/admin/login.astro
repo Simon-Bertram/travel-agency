@@ -1,0 +1,290 @@
+---
+import StaffAuthLayout from "../../layouts/StaffAuthLayout.astro";
+---
+
+<StaffAuthLayout
+  description="Sign in to the Travel Kairos staff portal."
+  title="Staff Sign In — Travel Kairos"
+>
+  <div class="mx-auto w-full max-w-md px-6 py-16">
+    <div
+      class="rounded-3xl border border-parchment-border bg-alabaster-card p-8 shadow-lg sm:p-10"
+    >
+      <div class="mb-8 text-center">
+        <div class="mb-3 inline-flex items-center gap-2">
+          <span class="h-px w-6 bg-champagne"></span>
+          <span
+            class="text-[11px] font-semibold uppercase tracking-[0.25em] text-champagne"
+          >
+            Staff access
+          </span>
+          <span class="h-px w-6 bg-champagne"></span>
+        </div>
+        <h1
+          class="font-serif text-3xl font-normal tracking-tight text-atelier-teal sm:text-4xl"
+        >
+          Agent <span class="italic text-atelier-teal-light">portal</span>
+        </h1>
+        <p class="mt-3 text-sm font-light leading-relaxed text-atelier-teal/70">
+          Sign in with your staff email. Two-factor authentication is required.
+        </p>
+      </div>
+
+      <form class="space-y-6" id="staff-signin-form" novalidate>
+        <div>
+          <label
+            class="mb-2 block text-[11px] font-semibold uppercase tracking-[0.16em] text-atelier-teal"
+            for="staff-signin-email"
+          >
+            Email <span class="text-champagne">*</span>
+          </label>
+          <input
+            aria-invalid="false"
+            autocapitalize="none"
+            autocomplete="email"
+            class="w-full rounded-xl border border-atelier-teal/50 bg-alabaster px-4 py-3 text-sm text-atelier-teal placeholder-atelier-teal/30 transition-colors focus-visible:border-champagne-dark focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atelier-teal focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            id="staff-signin-email"
+            name="email"
+            placeholder="agent@travelkairos.com"
+            required
+            spellcheck="false"
+            type="email"
+          >
+          <p
+            class="mt-1 hidden text-[11px] font-medium text-rose-700"
+            id="staff-signin-email-error"
+          ></p>
+        </div>
+
+        <div>
+          <label
+            class="mb-2 block text-[11px] font-semibold uppercase tracking-[0.16em] text-atelier-teal"
+            for="staff-signin-password"
+          >
+            Password <span class="text-champagne">*</span>
+          </label>
+          <input
+            aria-invalid="false"
+            autocomplete="current-password"
+            class="w-full rounded-xl border border-atelier-teal/50 bg-alabaster px-4 py-3 text-sm text-atelier-teal placeholder-atelier-teal/30 transition-colors focus-visible:border-champagne-dark focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atelier-teal focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            id="staff-signin-password"
+            name="password"
+            placeholder="Enter your password"
+            required
+            type="password"
+          >
+          <p
+            class="mt-1 hidden text-[11px] font-medium text-rose-700"
+            id="staff-signin-password-error"
+          ></p>
+        </div>
+
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="hidden text-sm font-medium text-rose-700"
+          id="staff-signin-form-error"
+          role="alert"
+        ></p>
+
+        <button
+          class="group inline-flex min-h-11 w-full items-center justify-center gap-3 rounded-full bg-atelier-teal px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-alabaster transition-all duration-300 hover:bg-atelier-teal-light hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-alabaster-card disabled:cursor-not-allowed disabled:opacity-50"
+          id="staff-signin-submit"
+          type="submit"
+        >
+          <span id="staff-signin-submit-label">Sign In</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</StaffAuthLayout>
+
+<script>
+  import { hasStaffRole } from "@travel-kairos/auth/permissions";
+  import { authClient, readAuthSession } from "../../lib/auth-client";
+  import { destinationAfterSignIn } from "../../lib/staff-session";
+
+  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const form = document.getElementById("staff-signin-form");
+  const emailInput = document.getElementById("staff-signin-email");
+  const passwordInput = document.getElementById("staff-signin-password");
+  const emailError = document.getElementById("staff-signin-email-error");
+  const passwordError = document.getElementById("staff-signin-password-error");
+  const formError = document.getElementById("staff-signin-form-error");
+  const submitButton = document.getElementById("staff-signin-submit");
+  const submitLabel = document.getElementById("staff-signin-submit-label");
+
+  if (!(form instanceof HTMLFormElement)) {
+    throw new Error("Staff sign-in form not found");
+  }
+
+  function isInput(el: Element | null): el is HTMLInputElement {
+    return el instanceof HTMLInputElement;
+  }
+
+  function isParagraph(el: Element | null): el is HTMLParagraphElement {
+    return el instanceof HTMLParagraphElement;
+  }
+
+  function setFieldError(
+    input: HTMLInputElement,
+    errorEl: HTMLParagraphElement,
+    message: string | null
+  ) {
+    if (message) {
+      errorEl.textContent = message;
+      errorEl.classList.remove("hidden");
+      input.setAttribute("aria-invalid", "true");
+      input.setAttribute("aria-describedby", errorEl.id);
+      input.classList.add("border-rose-700");
+      return;
+    }
+
+    errorEl.textContent = "";
+    errorEl.classList.add("hidden");
+    input.setAttribute("aria-invalid", "false");
+    input.removeAttribute("aria-describedby");
+    input.classList.remove("border-rose-700");
+  }
+
+  function setFormError(message: string | null) {
+    if (!isParagraph(formError)) {
+      return;
+    }
+
+    if (message) {
+      formError.textContent = message;
+      formError.classList.remove("hidden");
+      return;
+    }
+
+    formError.textContent = "";
+    formError.classList.add("hidden");
+  }
+
+  function validateSignIn() {
+    if (!(isInput(emailInput) && isInput(passwordInput))) {
+      return false;
+    }
+    if (!(isParagraph(emailError) && isParagraph(passwordError))) {
+      return false;
+    }
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    let firstInvalid: HTMLInputElement | null = null;
+
+    if (!email) {
+      setFieldError(emailInput, emailError, "Please enter your email address.");
+      firstInvalid ??= emailInput;
+    } else if (EMAIL_PATTERN.test(email)) {
+      setFieldError(emailInput, emailError, null);
+    } else {
+      setFieldError(
+        emailInput,
+        emailError,
+        "Please enter a valid email address."
+      );
+      firstInvalid ??= emailInput;
+    }
+
+    if (password) {
+      setFieldError(passwordInput, passwordError, null);
+    } else {
+      setFieldError(
+        passwordInput,
+        passwordError,
+        "Please enter your password."
+      );
+      firstInvalid ??= passwordInput;
+    }
+
+    firstInvalid?.focus();
+    return firstInvalid === null;
+  }
+
+  const existingSession = await readAuthSession();
+  if (existingSession?.user && hasStaffRole(existingSession.user.role)) {
+    window.location.assign(destinationAfterSignIn(existingSession.user));
+  } else if (existingSession?.user) {
+    window.location.assign("/dashboard");
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    setFormError(null);
+
+    if (!validateSignIn()) {
+      return;
+    }
+
+    if (!(isInput(emailInput) && isInput(passwordInput))) {
+      return;
+    }
+
+    form.setAttribute("aria-busy", "true");
+    if (submitButton instanceof HTMLButtonElement) {
+      submitButton.disabled = true;
+    }
+    if (submitLabel) {
+      submitLabel.textContent = "Signing in...";
+    }
+
+    try {
+      await authClient.signIn.email(
+        {
+          email: emailInput.value.trim(),
+          password: passwordInput.value,
+        },
+        {
+          onError: (ctx) => {
+            if (ctx.error.status === 429) {
+              setFormError(
+                "Too many attempts. Please wait a moment and try again."
+              );
+              return;
+            }
+
+            setFormError("Invalid email or password.");
+          },
+          onSuccess: (ctx) => {
+            if ("twoFactorRedirect" in ctx.data && ctx.data.twoFactorRedirect) {
+              window.location.assign("/admin/two-factor");
+              return;
+            }
+
+            const user =
+              "user" in ctx.data
+                ? (
+                    ctx.data as {
+                      user?: {
+                        role?: string | string[] | null;
+                        twoFactorEnabled?: boolean | null;
+                      };
+                    }
+                  ).user
+                : undefined;
+
+            if (user && !hasStaffRole(user.role)) {
+              window.location.assign("/dashboard");
+              return;
+            }
+
+            window.location.assign(destinationAfterSignIn(user));
+          },
+        }
+      );
+    } catch {
+      setFormError("Something went wrong. Please try again.");
+    } finally {
+      form.removeAttribute("aria-busy");
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = false;
+      }
+      if (submitLabel) {
+        submitLabel.textContent = "Sign In";
+      }
+    }
+  });
+</script>

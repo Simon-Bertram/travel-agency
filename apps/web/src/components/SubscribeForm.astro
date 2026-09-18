@@ -1,34 +1,189 @@
-<form class="flex flex-col sm:flex-row gap-3" id="gazette-form">
-  <input
-    class="flex-1 rounded-full border border-white/20 bg-white/5 px-5 py-3 text-xs text-white placeholder-white/40 focus:border-champagne focus:bg-white/10 focus:outline-none transition-all"
-    id="gazette-email"
-    placeholder="principal@estate.ch"
-    required
-    type="email"
+---
+import { PUBLIC_TURNSTILE_SITE_KEY } from "astro:env/client";
+
+interface Props {
+  instance: string;
+}
+
+const { instance } = Astro.props;
+const formId = `${instance}-gazette-form`;
+const emailId = `${instance}-gazette-email`;
+const honeypotId = `${instance}-gazette-company`;
+const widgetId = `${instance}-gazette-turnstile`;
+const successId = `${instance}-gazette-success`;
+const errorId = `${instance}-gazette-error`;
+---
+
+<form
+  class="relative flex flex-col gap-3 gazette-form"
+  data-email-id={emailId}
+  data-error-id={errorId}
+  data-honeypot-id={honeypotId}
+  data-sitekey={PUBLIC_TURNSTILE_SITE_KEY}
+  data-success-id={successId}
+  data-widget-id={widgetId}
+  id={formId}
+>
+  <div class="flex flex-col sm:flex-row gap-3">
+    <label class="sr-only" for={emailId}>Email address</label>
+    <input
+      autocomplete="email"
+      class="flex-1 rounded-full border border-white/20 bg-white/5 px-5 py-3 text-xs text-white placeholder-white/40 focus:border-champagne focus:bg-white/10 focus:outline-none transition-all"
+      id={emailId}
+      name="email"
+      placeholder="principal@estate.ch"
+      required
+      type="email"
+    >
+    <button
+      class="rounded-full bg-champagne px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-black hover:bg-champagne-light transition-colors whitespace-nowrap disabled:opacity-60"
+      type="submit"
+    >
+      Subscribe
+    </button>
+  </div>
+  <div
+    aria-hidden="true"
+    class="absolute left-[-10000px] h-px w-px overflow-hidden"
   >
-  <button
-    class="rounded-full bg-champagne px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-black hover:bg-champagne-light transition-colors whitespace-nowrap"
-    type="submit"
-  >
-    Subscribe
-  </button>
+    <label for={honeypotId}>Company</label>
+    <input
+      autocomplete="off"
+      id={honeypotId}
+      name="website"
+      tabindex="-1"
+      type="text"
+    >
+  </div>
+  <div id={widgetId}></div>
 </form>
-<p class="hidden text-xs text-champagne mt-2 font-light" id="gazette-success">
+<p class="hidden text-xs text-champagne mt-2 font-light" id={successId}>
   You're signed up to our holiday newsletter.
+</p>
+<p class="hidden text-xs text-red-300 mt-2 font-light" id={errorId}>
+  Could not subscribe right now. Please try again.
 </p>
 
 <script>
-  const gazetteForm = document.getElementById("gazette-form");
-  const gazetteSuccess = document.getElementById("gazette-success");
+  import { orpc } from "../lib/orpc";
 
-  gazetteForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    gazetteSuccess?.classList.remove("hidden");
-    const input = document.getElementById(
-      "gazette-email"
-    ) as unknown as HTMLInputElement;
-    if (input) {
-      input.value = "";
+  interface TurnstileApi {
+    getResponse: (widgetId: string) => string;
+    render: (
+      container: string | HTMLElement,
+      options: { action?: string; sitekey: string; theme?: string }
+    ) => string;
+    reset: (widgetId: string) => void;
+  }
+
+  const TURNSTILE_LOAD_TIMEOUT_MS = 10_000;
+
+  function getTurnstile(): TurnstileApi | undefined {
+    return (window as Window & { turnstile?: TurnstileApi }).turnstile;
+  }
+
+  function waitForTurnstile(): Promise<TurnstileApi> {
+    const startedAt = Date.now();
+    return new Promise((resolve, reject) => {
+      const tick = () => {
+        const turnstile = getTurnstile();
+        if (turnstile) {
+          resolve(turnstile);
+          return;
+        }
+        if (Date.now() - startedAt > TURNSTILE_LOAD_TIMEOUT_MS) {
+          reject(new Error("Turnstile did not load"));
+          return;
+        }
+        window.setTimeout(tick, 50);
+      };
+      tick();
+    });
+  }
+
+  function setStatus(
+    success: HTMLElement | null,
+    error: HTMLElement | null,
+    kind: "error" | "none" | "success"
+  ) {
+    success?.classList.toggle("hidden", kind !== "success");
+    error?.classList.toggle("hidden", kind !== "error");
+  }
+
+  function bindGazetteForm(form: HTMLFormElement) {
+    const emailId = form.dataset.emailId;
+    const errorId = form.dataset.errorId;
+    const honeypotId = form.dataset.honeypotId;
+    const siteKey = form.dataset.sitekey;
+    const successId = form.dataset.successId;
+    const widgetId = form.dataset.widgetId;
+    if (
+      !(emailId && errorId && honeypotId && siteKey && successId && widgetId)
+    ) {
+      return;
     }
-  });
+
+    const emailInput = document.getElementById(emailId);
+    const honeypotInput = document.getElementById(honeypotId);
+    const widget = document.getElementById(widgetId);
+    const success = document.getElementById(successId);
+    const error = document.getElementById(errorId);
+    let widgetHandle = "";
+
+    waitForTurnstile()
+      .then((turnstile) => {
+        if (!widget) {
+          return;
+        }
+        widgetHandle = turnstile.render(widget, {
+          action: "subscribe",
+          sitekey: siteKey,
+          theme: "dark",
+        });
+      })
+      .catch(() => {
+        setStatus(success, error, "error");
+      });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setStatus(success, error, "none");
+
+      const email =
+        emailInput instanceof HTMLInputElement ? emailInput.value.trim() : "";
+      const website =
+        honeypotInput instanceof HTMLInputElement ? honeypotInput.value : "";
+      const token = getTurnstile()?.getResponse(widgetHandle) ?? "";
+      const submitButton = form.querySelector("button[type='submit']");
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+
+      try {
+        await orpc.subscribe({
+          email,
+          turnstileToken: token,
+          website,
+        });
+        setStatus(success, error, "success");
+        if (emailInput instanceof HTMLInputElement) {
+          emailInput.value = "";
+        }
+      } catch {
+        setStatus(success, error, "error");
+      } finally {
+        getTurnstile()?.reset(widgetHandle);
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+  }
+
+  for (const form of document.querySelectorAll("form.gazette-form")) {
+    if (form instanceof HTMLFormElement) {
+      bindGazetteForm(form);
+    }
+  }
 </script>

@@ -117,7 +117,8 @@
 </div>
 
 <script>
-  import { authClient } from "../lib/auth-client";
+  import { authClient, readAuthSession } from "../lib/auth-client";
+  import { destinationAfterSignIn } from "../lib/staff-session";
 
   const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -132,6 +133,11 @@
 
   if (!(form instanceof HTMLFormElement)) {
     throw new Error("Sign-in form not found");
+  }
+
+  const existingSession = await readAuthSession();
+  if (existingSession?.user) {
+    window.location.assign(destinationAfterSignIn(existingSession.user));
   }
 
   function isInput(el: Element | null): el is HTMLInputElement {
@@ -257,8 +263,25 @@
 
             setFormError("Invalid email or password.");
           },
-          onSuccess: () => {
-            window.location.assign("/dashboard");
+          onSuccess: (ctx) => {
+            if ("twoFactorRedirect" in ctx.data && ctx.data.twoFactorRedirect) {
+              window.location.assign("/admin/two-factor");
+              return;
+            }
+
+            const user =
+              "user" in ctx.data
+                ? (
+                    ctx.data as {
+                      user?: {
+                        role?: string | string[] | null;
+                        twoFactorEnabled?: boolean | null;
+                      };
+                    }
+                  ).user
+                : undefined;
+
+            window.location.assign(destinationAfterSignIn(user));
           },
         }
       );

@@ -8,6 +8,9 @@ import {
 } from "drizzle-orm/sqlite-core";
 
 export const user = sqliteTable("user", {
+  banExpires: integer("ban_expires", { mode: "timestamp_ms" }),
+  banned: integer("banned", { mode: "boolean" }).default(false),
+  banReason: text("ban_reason"),
   createdAt: integer("created_at", { mode: "timestamp_ms" })
     .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
     .notNull(),
@@ -18,6 +21,10 @@ export const user = sqliteTable("user", {
   id: text("id").primaryKey(),
   image: text("image"),
   name: text("name").notNull(),
+  role: text("role").default("user"),
+  twoFactorEnabled: integer("two_factor_enabled", { mode: "boolean" }).default(
+    false
+  ),
   updatedAt: integer("updated_at", { mode: "timestamp_ms" })
     .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
     .$onUpdate(() => /* @__PURE__ */ new Date())
@@ -32,6 +39,7 @@ export const session = sqliteTable(
       .notNull(),
     expiresAt: integer("expires_at", { mode: "timestamp_ms" }).notNull(),
     id: text("id").primaryKey(),
+    impersonatedBy: text("impersonated_by"),
     ipAddress: text("ip_address"),
     token: text("token").notNull().unique(),
     updatedAt: integer("updated_at", { mode: "timestamp_ms" })
@@ -100,9 +108,29 @@ export const verification = sqliteTable(
   (table) => [index("verification_identifier_idx").on(table.identifier)]
 );
 
+export const twoFactor = sqliteTable(
+  "twoFactor",
+  {
+    backupCodes: text("backup_codes").notNull(),
+    failedVerificationCount: integer("failed_verification_count").default(0),
+    id: text("id").primaryKey(),
+    lockedUntil: integer("locked_until", { mode: "timestamp_ms" }),
+    secret: text("secret").notNull(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    verified: integer("verified", { mode: "boolean" }).default(true),
+  },
+  (table) => [
+    index("twoFactor_secret_idx").on(table.secret),
+    index("twoFactor_userId_idx").on(table.userId),
+  ]
+);
+
 export const userRelations = relations(user, ({ many }) => ({
   accounts: many(account),
   sessions: many(session),
+  twoFactors: many(twoFactor),
 }));
 
 export const sessionRelations = relations(session, ({ one }) => ({
@@ -115,6 +143,13 @@ export const sessionRelations = relations(session, ({ one }) => ({
 export const accountRelations = relations(account, ({ one }) => ({
   user: one(user, {
     fields: [account.userId],
+    references: [user.id],
+  }),
+}));
+
+export const twoFactorRelations = relations(twoFactor, ({ one }) => ({
+  user: one(user, {
+    fields: [twoFactor.userId],
     references: [user.id],
   }),
 }));

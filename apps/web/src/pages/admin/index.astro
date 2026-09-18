@@ -1,0 +1,117 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout
+  description="Overview of recent enquiries and active deals."
+  title="Staff dashboard — Travel Kairos"
+>
+  <div class="hidden" id="admin-content">
+    <p
+      class="text-[11px] font-semibold uppercase tracking-[0.25em] text-champagne"
+    >
+      Agent desk
+    </p>
+    <h1 class="mt-2 font-serif text-4xl text-atelier-teal">Dashboard</h1>
+    <p class="mt-3 max-w-2xl text-sm font-light text-atelier-teal/70">
+      Recent private enquiries and currently active holiday deals. Figures below
+      are placeholders until inventory APIs land.
+    </p>
+
+    <section class="mt-10">
+      <h2 class="font-serif text-2xl text-atelier-teal">Recent enquiries</h2>
+      <div
+        class="mt-4 overflow-hidden rounded-2xl border border-parchment-border"
+      >
+        <table class="w-full text-left text-sm">
+          <thead
+            class="bg-alabaster-subtle text-[11px] uppercase tracking-[0.16em] text-atelier-teal/70"
+          >
+            <tr>
+              <th class="px-4 py-3 font-medium">Reference</th>
+              <th class="px-4 py-3 font-medium">Client</th>
+              <th class="px-4 py-3 font-medium">Destination</th>
+              <th class="px-4 py-3 font-medium">Status</th>
+              <th class="px-4 py-3 font-medium">Received</th>
+            </tr>
+          </thead>
+          <tbody id="enquiries-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="font-serif text-2xl text-atelier-teal">Active deals</h2>
+      <div class="mt-4 grid gap-4 md:grid-cols-3" id="deals-grid"></div>
+    </section>
+  </div>
+
+  <p class="text-atelier-teal/70" id="admin-loading">
+    Loading staff dashboard…
+  </p>
+  <p class="hidden text-rose-700" id="admin-error"></p>
+</AdminLayout>
+
+<script>
+  import { hasStaffRole } from "@travel-kairos/auth/permissions";
+  import { readAuthSession } from "../../lib/auth-client";
+  import { orpc } from "../../lib/orpc";
+  import { destinationAfterSignIn } from "../../lib/staff-session";
+
+  const content = document.getElementById("admin-content");
+  const loading = document.getElementById("admin-loading");
+  const errorEl = document.getElementById("admin-error");
+  const enquiriesBody = document.getElementById("enquiries-body");
+  const dealsGrid = document.getElementById("deals-grid");
+
+  const session = await readAuthSession();
+  if (!session?.user) {
+    window.location.assign("/admin/login");
+  } else if (!hasStaffRole(session.user.role)) {
+    window.location.assign("/dashboard");
+  } else if (session.user.twoFactorEnabled) {
+    try {
+      const dashboard = await orpc.staff.dashboard();
+      if (enquiriesBody) {
+        for (const enquiry of dashboard.enquiries) {
+          const row = document.createElement("tr");
+          row.className = "border-t border-parchment-border";
+          row.innerHTML = `
+            <td class="px-4 py-3 font-medium">${enquiry.id}</td>
+            <td class="px-4 py-3">${enquiry.name}</td>
+            <td class="px-4 py-3">${enquiry.destination}</td>
+            <td class="px-4 py-3">${enquiry.status}</td>
+            <td class="px-4 py-3">${enquiry.receivedAt}</td>
+          `;
+          enquiriesBody.appendChild(row);
+        }
+      }
+
+      if (dealsGrid) {
+        for (const deal of dashboard.deals) {
+          const card = document.createElement("article");
+          card.className =
+            "rounded-2xl border border-parchment-border bg-alabaster-card p-5";
+          card.innerHTML = `
+            <p class="text-[11px] uppercase tracking-[0.16em] text-champagne">${deal.status}</p>
+            <h3 class="mt-2 font-serif text-xl text-atelier-teal">${deal.title}</h3>
+            <p class="mt-2 text-sm text-atelier-teal/70">Departs ${deal.departure}</p>
+          `;
+          dealsGrid.appendChild(card);
+        }
+      }
+
+      loading?.classList.add("hidden");
+      content?.classList.remove("hidden");
+    } catch {
+      loading?.classList.add("hidden");
+      if (errorEl) {
+        errorEl.textContent =
+          "Could not load the staff dashboard. Confirm 2FA is enabled and retry.";
+        errorEl.classList.remove("hidden");
+      }
+    }
+  } else {
+    window.location.assign(destinationAfterSignIn(session.user));
+  }
+</script>

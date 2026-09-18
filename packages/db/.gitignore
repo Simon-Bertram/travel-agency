@@ -1,8 +1,8 @@
 # dependencies (bun install)
 node_modules
 
-# drizzle-kit generates meta/_journal.json (pre-v1 layout) which Alchemy rejects at deploy time
-src/migrations/meta
+# Stash used by infra deploy while Alchemy applies flat SQL
+.drizzle-meta-stash
 
 # output
 out

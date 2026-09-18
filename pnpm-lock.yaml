@@ -154,12 +154,15 @@ importers:
       '@travel-kairos/api':
         specifier: workspace:*
         version: link:../../packages/api
+      '@travel-kairos/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
       '@travel-kairos/env':
         specifier: workspace:*
         version: link:../../packages/env
       astro:
-        specifier: ^7.3.2
-        version: 7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
+        specifier: ^7.3.3
+        version: 7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
       better-auth:
         specifier: 'catalog:'
         version: 1.7.1(@cloudflare/workers-types@5.20260915.1)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@5.20260915.1)(@electric-sql/pglite@0.3.15)(@libsql/client@0.17.4)(kysely@0.29.5))(react@19.2.8)(vitest@4.1.11(@types/node@26.6.0)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))
@@ -169,13 +172,16 @@ importers:
       evlog:
         specifier: 'catalog:'
         version: 2.29.0(@orpc/server@1.15.1(crossws@0.3.5)(ws@8.21.3))(h3@1.15.11)(hono@4.13.8)(ofetch@1.5.1)(react@19.2.8)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
+      uqr:
+        specifier: ^0.1.2
+        version: 0.1.3
       zod:
         specifier: 'catalog:'
         version: 4.6.5
     devDependencies:
       '@alchemy.run/frontend-frameworks':
         specifier: 2.0.0-beta.77
-        version: 2.0.0-beta.77(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.13.8)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
+        version: 2.0.0-beta.77(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.13.8)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
       '@astrojs/check':
         specifier: ^0.9.10
         version: 0.9.10(prettier@3.9.6)(typescript@6.0.3)
@@ -341,7 +347,7 @@ importers:
         version: link:../config
       alchemy:
         specifier: 2.0.0-beta.75
-        version: 2.0.0-beta.75(@alchemy.run/frontend-frameworks@2.0.0-beta.75(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.11.4)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(effect@4.0.0-rc.112)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(vitest@4.1.11(@types/node@26.6.0)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))(ws@8.21.3)
+        version: 2.0.0-beta.75(@alchemy.run/frontend-frameworks@2.0.0-beta.75(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.11.4)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(effect@4.0.0-rc.112)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(vitest@4.1.11(@types/node@26.6.0)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))(ws@8.21.3)
       effect:
         specifier: 4.0.0-rc.112
         version: 4.0.0-rc.112
@@ -2603,6 +2609,7 @@ packages:
   '@smithy/node-http-handler@4.12.0':
     resolution: {integrity: sha512-0mq1pHadfyXCYCqm2cNpbjNIT+fbaUpNxewZb/YNr2L0IrEVMOb8gM/Fl4K6XvHCW3uSNDFwPl/+iKm0bx9jYg==}
     engines: {node: '>=18.0.0'}
+    deprecated: Depreacted due to a memory leak issue https://github.com/smithy-lang/smithy-typescript/issues/2258
 
   '@smithy/shared-ini-file-loader@4.7.2':
     resolution: {integrity: sha512-XsIDj5gVG4YRxGS4n4TiBDAogPWRHXKZyor6JW/sEuaa/7BvKADe9j45jI2dPYCnYbKkLBmbZ4qN9ns0sH+kMQ==}
@@ -3163,8 +3170,8 @@ packages:
       '@astrojs/markdown-remark':
         optional: true
 
-  astro@7.3.2:
-    resolution: {integrity: sha512-ysTcdpGP61XZpHoMRYC/CK19DQ94qkBvzXMtXEo0gEqPNkmOU/Tv++CtWmzaI4nF2Ck8RXFdiWvdlTWa2oOr9w==}
+  astro@7.3.3:
+    resolution: {integrity: sha512-NF08hk3edFkVmr9avf9HW/rQyf6NrpbVDyYj2cVN3JfijDhfJYh1ivWVTY5PUd5+rRZn/Vtu4iaeyNlP0Iv6mg==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
     peerDependencies:
@@ -3822,6 +3829,10 @@ packages:
 
   find-proc@0.1.0:
     resolution: {integrity: sha512-OaOpEYv2PiQ7SQ5LIrl+deA1XaWcxEjnpM6VuWXTUvn+teIXxeFTLDmu18/zDQpFmHN4o3oDBX+BT0AGwEhemg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+
+  find-proc@0.2.0:
+    resolution: {integrity: sha512-a6h2nTrgB3g5Wrn4au9Ux4kMk7IJtyF6oA8uGn+mk3weLZssUtc1cp6meHIzzuW2o1srrBAxzkmXLbqjRkgB6w==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   find-workspaces@0.3.1:
@@ -5149,6 +5160,9 @@ packages:
       uploadthing:
         optional: true
 
+  uqr@0.1.3:
+    resolution: {integrity: sha512-0rjE8iEJe4YmT9TOhwsZtqCMRLc5DXZUI2UEYUUg63ikBkqqE5EYWaI0etFe/5KUcmcYwLih2RND1kq+hrUJXA==}
+
   url-extras@0.1.0:
     resolution: {integrity: sha512-8tzwTeXFPuX/5PHuCDQE5Dd9Ts4rwoq2t9aIT+HS4iAVpmj5l4Ao7Q+BuuFjvWRqrLswBhQDk8O96ZicgCqQqw==}
     engines: {node: '>=20'}
@@ -5166,6 +5180,10 @@ packages:
 
   verkit@0.3.2:
     resolution: {integrity: sha512-zj/ob3UsvJGN0whEAKFp53REA5X66hvffVqoCtVQAakJKnKlH+/PcOfMoFwIG/o4rElqLv/ycAFlx8ZlXUorCg==}
+    engines: {node: '>=18.12.0'}
+
+  verkit@0.4.0:
+    resolution: {integrity: sha512-sXMwN6DMHeouPfCxkxWkKAmxphWKEenHYY5H1nIBzU3PmDsmJp6kBXJdshjVdpMZuWCmL9SH7KFRx29AylpP6g==}
     engines: {node: '>=18.12.0'}
 
   vfile-message@4.0.3:
@@ -5597,7 +5615,7 @@ snapshots:
     dependencies:
       effect: 4.0.0-rc.112
 
-  '@alchemy.run/frontend-frameworks@2.0.0-beta.75(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.11.4)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))':
+  '@alchemy.run/frontend-frameworks@2.0.0-beta.75(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.11.4)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))':
     dependencies:
       '@alchemy.run/cloudflare-runtime': 2.0.0-beta.75(@distilled.cloud/cloudflare@1.0.0-rc.8(effect@4.0.0-rc.112))(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(effect@4.0.0-rc.112)(rolldown@1.2.5)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
       '@distilled.cloud/cloudflare': 1.0.0-rc.8(effect@4.0.0-rc.112)
@@ -5608,7 +5626,7 @@ snapshots:
     optionalDependencies:
       '@effect/platform-bun': 4.0.0-rc.112(effect@4.0.0-rc.112)
       '@effect/platform-node': 4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1)
-      astro: 7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
+      astro: 7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
       hono: 4.11.4
       vite: 8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
     transitivePeerDependencies:
@@ -5617,7 +5635,7 @@ snapshots:
       - typescript
     optional: true
 
-  '@alchemy.run/frontend-frameworks@2.0.0-beta.77(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.13.8)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))':
+  '@alchemy.run/frontend-frameworks@2.0.0-beta.77(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.13.8)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))':
     dependencies:
       '@alchemy.run/cloudflare-runtime': 2.0.0-beta.77(@distilled.cloud/cloudflare@1.0.0-rc.9(effect@4.0.0-rc.112))(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(effect@4.0.0-rc.112)(rolldown@1.2.5)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
       '@distilled.cloud/cloudflare': 1.0.0-rc.9(effect@4.0.0-rc.112)
@@ -5628,7 +5646,7 @@ snapshots:
     optionalDependencies:
       '@effect/platform-bun': 4.0.0-rc.112(effect@4.0.0-rc.112)
       '@effect/platform-node': 4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1)
-      astro: 7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
+      astro: 7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
       hono: 4.13.8
       vite: 8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
     transitivePeerDependencies:
@@ -6681,8 +6699,8 @@ snapshots:
       hast-util-to-html: 9.0.5
       hast-util-to-text: 4.0.2
       hastscript: 9.0.1
-      postcss: 8.5.26
-      postcss-nested: 6.2.0(postcss@8.5.26)
+      postcss: 8.5.28
+      postcss-nested: 6.2.0(postcss@8.5.28)
       unist-util-visit: 5.1.0
       unist-util-visit-parents: 6.0.2
 
@@ -7861,7 +7879,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  alchemy@2.0.0-beta.75(@alchemy.run/frontend-frameworks@2.0.0-beta.75(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.11.4)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(effect@4.0.0-rc.112)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(vitest@4.1.11(@types/node@26.6.0)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))(ws@8.21.3):
+  alchemy@2.0.0-beta.75(@alchemy.run/frontend-frameworks@2.0.0-beta.75(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.11.4)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(effect@4.0.0-rc.112)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(vitest@4.1.11(@types/node@26.6.0)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)))(ws@8.21.3):
     dependencies:
       '@alchemy.run/cloudflare-runtime': 2.0.0-beta.75(@distilled.cloud/cloudflare@1.0.0-rc.8(effect@4.0.0-rc.112))(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(effect@4.0.0-rc.112)(rolldown@1.2.5)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
       '@alchemy.run/floci': 2.0.0-beta.75(effect@4.0.0-rc.112)
@@ -7903,7 +7921,7 @@ snapshots:
       undici: 7.29.0
       yaml: 2.9.0
     optionalDependencies:
-      '@alchemy.run/frontend-frameworks': 2.0.0-beta.75(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.11.4)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
+      '@alchemy.run/frontend-frameworks': 2.0.0-beta.75(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@26.6.0)(astro@7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))(effect@4.0.0-rc.112)(hono@4.11.4)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
       '@effect/platform-bun': 4.0.0-rc.112(effect@4.0.0-rc.112)
       '@effect/platform-node': 4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1)
       vite: 8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
@@ -8044,7 +8062,7 @@ snapshots:
       - uploadthing
       - yaml
 
-  astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1):
+  astro@7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.0)(aws4fetch@1.0.20)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1):
     dependencies:
       '@astrojs/compiler-rs': 0.4.1(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)
       '@astrojs/internal-helpers': 0.11.0
@@ -8065,7 +8083,7 @@ snapshots:
       dset: 3.1.4
       es-module-lexer: 2.3.2
       esbuild: 0.28.2
-      find-proc: 0.1.0
+      find-proc: 0.2.0
       flattie: 1.1.1
       fontace: 0.4.1
       get-tsconfig: 5.0.0-beta.4
@@ -8084,7 +8102,6 @@ snapshots:
       package-manager-detector: 1.8.0
       piccolore: 0.1.3
       picomatch: 4.0.7
-      semver: 7.8.5
       shiki: 4.4.3
       smol-toml: 1.8.0
       svgo: 4.1.0
@@ -8094,6 +8111,7 @@ snapshots:
       ultrahtml: 1.7.0
       unifont: 0.7.5
       unstorage: 1.17.5(aws4fetch@1.0.20)
+      verkit: 0.4.0
       vite: 8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1)
       vitefu: 1.1.3(vite@8.3.0(@types/node@26.6.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.1))
       xxhash-wasm: 1.1.0
@@ -8625,6 +8643,8 @@ snapshots:
       to-regex-range: 5.0.1
 
   find-proc@0.1.0: {}
+
+  find-proc@0.2.0: {}
 
   find-workspaces@0.3.1:
     dependencies:
@@ -9485,9 +9505,9 @@ snapshots:
       mlly: 1.8.2
       pathe: 2.0.3
 
-  postcss-nested@6.2.0(postcss@8.5.26):
+  postcss-nested@6.2.0(postcss@8.5.28):
     dependencies:
-      postcss: 8.5.26
+      postcss: 8.5.28
       postcss-selector-parser: 6.1.4
 
   postcss-selector-parser@6.1.4:
@@ -10074,6 +10094,8 @@ snapshots:
     optionalDependencies:
       aws4fetch: 1.0.20
 
+  uqr@0.1.3: {}
+
   url-extras@0.1.0: {}
 
   util-deprecate@1.0.2: {}
@@ -10083,6 +10105,8 @@ snapshots:
       typescript: 6.0.3
 
   verkit@0.3.2: {}
+
+  verkit@0.4.0: {}
 
   vfile-message@4.0.3:
     dependencies:

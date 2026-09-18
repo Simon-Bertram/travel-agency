@@ -21,3 +21,4 @@ catalog:
   "@orpc/client": ^1.15.1
 minimumReleaseAgeExclude:
   - '@astrojs/starlight@0.42.0'
+  - astro@7.3.3

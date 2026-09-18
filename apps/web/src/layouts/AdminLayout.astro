@@ -1,0 +1,137 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  description?: string;
+  title?: string;
+}
+
+const {
+  title = "Staff Admin — Travel Kairos",
+  description = "Staff portal for Travel Kairos travel agents.",
+} = Astro.props;
+
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html class="light scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml">
+    <meta content={Astro.generator} name="generator">
+    <title>{title}</title>
+    <meta content={description} name="description">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+      rel="stylesheet"
+    >
+  </head>
+  <body
+    class="min-h-screen bg-alabaster text-atelier-teal font-sans antialiased selection:bg-champagne/30 selection:text-black"
+  >
+    <header
+      class="hidden border-b border-atelier-teal/10 bg-alabaster-card/90 backdrop-blur-md"
+      id="admin-chrome"
+    >
+      <div
+        class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-10"
+      >
+        <a class="flex flex-col" href="/admin">
+          <span
+            class="font-serif text-lg tracking-[0.18em] font-semibold text-champagne-dark"
+          >
+            TRAVEL KAIROS
+          </span>
+          <span
+            class="text-[10px] uppercase tracking-[0.28em] text-atelier-teal/70"
+          >
+            Staff portal
+          </span>
+        </a>
+        <nav
+          class="flex items-center gap-2 text-[12px] uppercase tracking-[0.16em]"
+        >
+          <a
+            class={`rounded-full px-3 py-2 ${
+              path === "/admin"
+                ? "bg-atelier-teal text-alabaster"
+                : "text-atelier-teal/80 hover:text-atelier-teal"
+            }`}
+            href="/admin"
+          >
+            Dashboard
+          </a>
+          <a
+            class={`hidden rounded-full px-3 py-2 ${
+              path.startsWith("/admin/staff")
+                ? "bg-atelier-teal text-alabaster"
+                : "text-atelier-teal/80 hover:text-atelier-teal"
+            }`}
+            href="/admin/staff"
+            id="admin-staff-link"
+          >
+            Staff
+          </a>
+          <button
+            class="rounded-full px-3 py-2 text-rose-700 hover:bg-rose-50"
+            id="admin-signout"
+            type="button"
+          >
+            Sign out
+          </button>
+        </nav>
+      </div>
+    </header>
+    <main class="mx-auto w-full max-w-6xl px-6 py-10 lg:px-10">
+      <slot />
+    </main>
+    <script>
+      import {
+        hasStaffRole,
+        isAdminRole,
+      } from "@travel-kairos/auth/permissions";
+      import { authClient, readAuthSession } from "../lib/auth-client";
+
+      const chrome = document.getElementById("admin-chrome");
+      const staffLink = document.getElementById("admin-staff-link");
+      const signOutButton = document.getElementById("admin-signout");
+
+      async function initAdminNav() {
+        const session = await readAuthSession();
+        const role = session?.user.role;
+
+        if (
+          session?.user &&
+          hasStaffRole(role) &&
+          session.user.twoFactorEnabled
+        ) {
+          chrome?.classList.remove("hidden");
+        }
+
+        if (
+          session?.user &&
+          isAdminRole(role) &&
+          session.user.twoFactorEnabled
+        ) {
+          staffLink?.classList.remove("hidden");
+        }
+      }
+
+      signOutButton?.addEventListener("click", async () => {
+        await authClient.signOut({
+          fetchOptions: {
+            onSuccess: () => {
+              window.location.assign("/admin/login");
+            },
+          },
+        });
+      });
+
+      initAdminNav();
+    </script>
+  </body>
+</html>

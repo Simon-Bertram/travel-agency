@@ -11,6 +11,11 @@ export default defineConfig({
         context: "client",
         default: "http://localhost:3000",
       }),
+      PUBLIC_TURNSTILE_SITE_KEY: envField.string({
+        access: "public",
+        context: "client",
+        default: "1x00000000000000000000AA",
+      }),
     },
   },
   fonts: [

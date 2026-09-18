@@ -5,6 +5,8 @@ import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
 import { createContext } from "@travel-kairos/api/context";
 import { appRouter } from "@travel-kairos/api/routers/index";
 import { createAuth } from "@travel-kairos/auth";
+import { createDb } from "@travel-kairos/db";
+import { promoteAdminByEmail } from "@travel-kairos/db/promote-admin";
 import { env } from "@travel-kairos/env/server";
 import { createAxiomDrain } from "evlog/axiom";
 import { createAuthMiddleware } from "evlog/better-auth";
@@ -33,6 +35,8 @@ const identifyUser = createAuthMiddleware(auth, {
 
 const app = new Hono<EvlogVariables>();
 
+const allowedOrigins = new Set([env.CORS_ORIGIN, "http://localhost:4321"]);
+
 app.use(
   evlog({
     drain: isDev ? createMemoryDrain() : createAxiomDrain(),
@@ -60,19 +64,46 @@ app.use(
     allowHeaders: ["Content-Type", "Authorization"],
     allowMethods: ["GET", "POST", "OPTIONS"],
     credentials: true,
-    origin: env.CORS_ORIGIN,
+    origin: (origin) => (allowedOrigins.has(origin) ? origin : ""),
   })
 );
 
 app.on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw));
 
+function isLocalHost(c: HonoContext) {
+  const [host] = (c.req.header("host") ?? "").split(":");
+  return host === "localhost" || host === "127.0.0.1";
+}
+
 if (isDev) {
   app.get("/_evlog/logs", (c) => {
-    const [host] = (c.req.header("host") ?? "").split(":");
-    if (host !== "localhost" && host !== "127.0.0.1") {
+    if (!isLocalHost(c)) {
       return c.notFound();
     }
     return c.json(readMemoryLogs(parseReadMemoryLogsQuery(c.req.query())));
+  });
+
+  app.post("/_dev/promote-admin", async (c) => {
+    if (!isLocalHost(c)) {
+      return c.notFound();
+    }
+
+    const body = await c.req.json().catch(() => null);
+    const email =
+      body && typeof body === "object" && "email" in body
+        ? body.email
+        : undefined;
+
+    if (typeof email !== "string" || email.trim().length === 0) {
+      return c.json({ message: "Provide an email to promote." }, 400);
+    }
+
+    const promoted = await promoteAdminByEmail(createDb(), email);
+    if (!promoted) {
+      return c.json({ message: "No user found with that email." }, 404);
+    }
+
+    return c.json(promoted);
   });
 }
 

@@ -5,6 +5,9 @@
     ".": {
       "default": "./src/index.ts"
     },
+    "./permissions": {
+      "default": "./src/permissions.ts"
+    },
     "./*": {
       "default": "./src/*.ts"
     }

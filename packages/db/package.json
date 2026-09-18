@@ -11,7 +11,8 @@
   },
   "scripts": {
     "db:generate": "drizzle-kit generate",
-    "db:migrate:deploy": "drizzle-kit migrate"
+    "db:migrate:deploy": "drizzle-kit migrate",
+    "promote-admin": "node ./scripts/promote-admin.mjs"
   },
   "dependencies": {
     "@libsql/client": "0.17.4",

@@ -1,18 +1,14 @@
 ---
 import "../styles/global.css";
-import Footer from "../components/Footer.astro";
-import Navbar from "../components/Navbar.astro";
 
 interface Props {
   description?: string;
-  hideFooter?: boolean;
   title?: string;
 }
 
 const {
-  title = "Travel Kairos — Travel Agency",
-  description = "Travel Agency for the modern traveler.",
-  hideFooter = false,
+  title = "Staff Sign In — Travel Kairos",
+  description = "Sign in to the Travel Kairos staff portal.",
 } = Astro.props;
 ---
 
@@ -25,28 +21,18 @@ const {
     <meta content={Astro.generator} name="generator">
     <title>{title}</title>
     <meta content={description} name="description">
-
-    <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Body) -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
       rel="stylesheet"
     >
-    <script
-      async
-      defer
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-      is:inline
-    ></script>
   </head>
   <body
-    class="min-h-screen flex flex-col justify-between bg-alabaster text-black font-sans antialiased selection:bg-champagne/30 selection:text-black"
+    class="min-h-screen bg-alabaster text-atelier-teal font-sans antialiased selection:bg-champagne/30 selection:text-black"
   >
-    <Navbar />
-    <main class="grow">
+    <main class="flex min-h-screen items-center justify-center">
       <slot />
     </main>
-    {!hideFooter && <Footer />}
   </body>
 </html>

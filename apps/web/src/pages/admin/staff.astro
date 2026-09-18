@@ -1,0 +1,255 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout
+  description="Create travel agent accounts."
+  title="Staff accounts — Travel Kairos"
+>
+  <div class="hidden" id="staff-content">
+    <p
+      class="text-[11px] font-semibold uppercase tracking-[0.25em] text-champagne"
+    >
+      Administration
+    </p>
+    <h1 class="mt-2 font-serif text-4xl text-atelier-teal">Travel agents</h1>
+    <p class="mt-3 max-w-2xl text-sm font-light text-atelier-teal/70">
+      Create agent accounts with a one-time password. Share it securely; it is
+      not emailed and will not be shown again.
+    </p>
+
+    <form
+      class="mt-8 max-w-xl space-y-5 rounded-2xl border border-parchment-border bg-alabaster-card p-6"
+      id="create-agent-form"
+    >
+      <div>
+        <label
+          class="mb-2 block text-[11px] font-semibold uppercase tracking-[0.16em] text-atelier-teal"
+          for="agent-name"
+        >
+          Full name
+        </label>
+        <input
+          class="w-full rounded-xl border border-atelier-teal/50 bg-alabaster px-4 py-3 text-sm text-atelier-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atelier-teal"
+          id="agent-name"
+          name="name"
+          required
+        >
+      </div>
+      <div>
+        <label
+          class="mb-2 block text-[11px] font-semibold uppercase tracking-[0.16em] text-atelier-teal"
+          for="agent-email"
+        >
+          Email
+        </label>
+        <input
+          autocomplete="email"
+          class="w-full rounded-xl border border-atelier-teal/50 bg-alabaster px-4 py-3 text-sm text-atelier-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atelier-teal"
+          id="agent-email"
+          name="email"
+          required
+          type="email"
+        >
+      </div>
+      <p
+        aria-live="assertive"
+        class="hidden text-sm font-medium text-rose-700"
+        id="create-error"
+        role="alert"
+      ></p>
+      <button
+        class="inline-flex min-h-11 items-center justify-center rounded-full bg-atelier-teal px-8 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-alabaster disabled:opacity-50"
+        id="create-submit"
+        type="submit"
+      >
+        Create agent
+      </button>
+    </form>
+
+    <div
+      class="mt-6 hidden max-w-xl rounded-2xl border border-champagne bg-alabaster-card p-6"
+      id="password-panel"
+    >
+      <p class="text-[11px] uppercase tracking-[0.16em] text-champagne">
+        One-time password
+      </p>
+      <p class="mt-2 text-sm text-atelier-teal/80" id="created-agent-label"></p>
+      <p
+        class="mt-3 break-all font-mono text-lg text-atelier-teal"
+        id="created-password"
+      ></p>
+      <button
+        class="mt-4 rounded-full border border-atelier-teal px-4 py-2 text-xs uppercase tracking-[0.16em] text-atelier-teal"
+        id="copy-password"
+        type="button"
+      >
+        Copy password
+      </button>
+    </div>
+
+    <section class="mt-10">
+      <h2 class="font-serif text-2xl text-atelier-teal">Current staff</h2>
+      <div
+        class="mt-4 overflow-hidden rounded-2xl border border-parchment-border"
+      >
+        <table class="w-full text-left text-sm">
+          <thead
+            class="bg-alabaster-subtle text-[11px] uppercase tracking-[0.16em] text-atelier-teal/70"
+          >
+            <tr>
+              <th class="px-4 py-3 font-medium">Name</th>
+              <th class="px-4 py-3 font-medium">Email</th>
+              <th class="px-4 py-3 font-medium">Role</th>
+              <th class="px-4 py-3 font-medium">2FA</th>
+            </tr>
+          </thead>
+          <tbody id="staff-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <p class="text-atelier-teal/70" id="staff-loading">
+    Loading staff directory…
+  </p>
+  <p class="hidden text-rose-700" id="staff-forbidden"></p>
+</AdminLayout>
+
+<script>
+  import { hasStaffRole, isAdminRole } from "@travel-kairos/auth/permissions";
+  import { readAuthSession } from "../../lib/auth-client";
+  import { orpc } from "../../lib/orpc";
+  import { destinationAfterSignIn } from "../../lib/staff-session";
+
+  const content = document.getElementById("staff-content");
+  const loading = document.getElementById("staff-loading");
+  const forbidden = document.getElementById("staff-forbidden");
+  const form = document.getElementById("create-agent-form");
+  const nameInput = document.getElementById("agent-name");
+  const emailInput = document.getElementById("agent-email");
+  const createError = document.getElementById("create-error");
+  const createSubmit = document.getElementById("create-submit");
+  const passwordPanel = document.getElementById("password-panel");
+  const createdLabel = document.getElementById("created-agent-label");
+  const createdPassword = document.getElementById("created-password");
+  const copyPassword = document.getElementById("copy-password");
+  const staffBody = document.getElementById("staff-body");
+
+  function setCreateError(message: string | null) {
+    if (!(createError instanceof HTMLParagraphElement)) {
+      return;
+    }
+    if (message) {
+      createError.textContent = message;
+      createError.classList.remove("hidden");
+      return;
+    }
+    createError.textContent = "";
+    createError.classList.add("hidden");
+  }
+
+  async function renderStaff() {
+    const staff = await orpc.staff.listStaff();
+    if (!staffBody) {
+      return;
+    }
+    staffBody.replaceChildren();
+    for (const member of staff) {
+      const row = document.createElement("tr");
+      row.className = "border-t border-parchment-border";
+      const role = Array.isArray(member.role)
+        ? member.role.join(", ")
+        : (member.role ?? "user");
+      const values = [
+        member.name,
+        member.email,
+        role,
+        member.twoFactorEnabled ? "Enabled" : "Pending",
+      ];
+      for (const value of values) {
+        const cell = document.createElement("td");
+        cell.className = "px-4 py-3";
+        cell.textContent = value;
+        row.appendChild(cell);
+      }
+      staffBody.appendChild(row);
+    }
+  }
+
+  const session = await readAuthSession();
+  if (!session?.user) {
+    window.location.assign("/admin/login");
+  } else if (!hasStaffRole(session.user.role)) {
+    window.location.assign("/dashboard");
+  } else if (!session.user.twoFactorEnabled) {
+    window.location.assign(destinationAfterSignIn(session.user));
+  } else if (isAdminRole(session.user.role)) {
+    try {
+      await renderStaff();
+      loading?.classList.add("hidden");
+      content?.classList.remove("hidden");
+    } catch {
+      loading?.classList.add("hidden");
+      if (forbidden) {
+        forbidden.textContent = "Could not load staff accounts.";
+        forbidden.classList.remove("hidden");
+      }
+    }
+  } else {
+    loading?.classList.add("hidden");
+    if (forbidden) {
+      forbidden.textContent = "Only admins can manage travel agent accounts.";
+      forbidden.classList.remove("hidden");
+    }
+  }
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    setCreateError(null);
+    if (
+      !(
+        nameInput instanceof HTMLInputElement &&
+        emailInput instanceof HTMLInputElement
+      )
+    ) {
+      return;
+    }
+    if (createSubmit instanceof HTMLButtonElement) {
+      createSubmit.disabled = true;
+    }
+
+    try {
+      const created = await orpc.staff.createAgent({
+        email: emailInput.value.trim(),
+        name: nameInput.value.trim(),
+      });
+      if (createdLabel) {
+        createdLabel.textContent = `Share this password with ${created.user.name} (${created.user.email}).`;
+      }
+      if (createdPassword) {
+        createdPassword.textContent = created.password;
+      }
+      passwordPanel?.classList.remove("hidden");
+      await renderStaff();
+      if (form instanceof HTMLFormElement) {
+        form.reset();
+      }
+    } catch {
+      setCreateError(
+        "Could not create that agent. The email may already exist."
+      );
+    } finally {
+      if (createSubmit instanceof HTMLButtonElement) {
+        createSubmit.disabled = false;
+      }
+    }
+  });
+
+  copyPassword?.addEventListener("click", async () => {
+    const password = createdPassword?.textContent;
+    if (password) {
+      await navigator.clipboard.writeText(password);
+    }
+  });
+</script>

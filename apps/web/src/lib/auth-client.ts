@@ -1,5 +1,7 @@
 import { PUBLIC_SERVER_URL } from "astro:env/client";
+import { ac, roles } from "@travel-kairos/auth/permissions";
 import { createAuthClient } from "better-auth/client";
+import { adminClient, twoFactorClient } from "better-auth/client/plugins";
 
 function getServerUrl(url: string) {
   const processEnv = (
@@ -40,4 +42,24 @@ export const authClient = createAuthClient({
   // better-auth derives its route-matching base from this URL's path, so the
   // public auth path must equal the server-side mount (/api/auth everywhere)
   baseURL: new URL("/api/auth", getServerUrl(PUBLIC_SERVER_URL)).toString(),
+  plugins: [
+    adminClient({
+      ac,
+      roles,
+    }),
+    twoFactorClient({
+      onTwoFactorRedirect() {
+        window.location.assign("/admin/two-factor");
+      },
+    }),
+  ],
 });
+
+export async function readAuthSession() {
+  try {
+    const { data } = await authClient.getSession();
+    return data ?? null;
+  } catch {
+    return null;
+  }
+}

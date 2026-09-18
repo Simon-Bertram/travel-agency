@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "check-types": "tsc --noEmit",
-    "deploy": "rm -rf ../../packages/db/src/migrations/meta && alchemy deploy --yes",
+    "deploy": "node ./scripts/deploy.mjs",
     "destroy": "alchemy destroy --yes",
     "dev": "alchemy dev"
   },
